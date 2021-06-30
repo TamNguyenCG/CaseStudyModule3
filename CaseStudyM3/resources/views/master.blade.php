@@ -17,11 +17,9 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
-
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick-theme.css')}}">
-
 </head>
 
 <body>
@@ -31,26 +29,15 @@
         <div class="w-100 d-flex justify-content-between">
             <div>
                 <i class="fa fa-envelope mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="gmail.com">pikomastermind@gmail.com</a>
                 <i class="fa fa-phone mx-2"></i>
                 <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
             </div>
             <div>
-
-
-                @if(\Illuminate\Support\Facades\Auth::user())
-                    <div class="dropdown">
-                        {{\Illuminate\Support\Facades\Auth::user()->name}}
-                        <i class="fa fa-chevron-circle-down " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul class="dropdown-menu dropdown-menu-dark text-center " aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-                        </ul>
-                    </div>
-
-                @else
-                <a class="text-light text-decoration-none" href="{{route('users.login')}}">Login</a>
-                <span>/</span>
-                <a class="text-light text-decoration-none" href="{{route('users.register')}}">Register</a>
+                @if(!\Illuminate\Support\Facades\Auth::user())
+                    <a class="text-light text-decoration-none" href="{{route('users.login')}}">Login</a>
+                    <span>/</span>
+                    <a class="text-light text-decoration-none" href="{{route('users.register')}}">Register</a>
                 @endif
             </div>
         </div>
@@ -97,11 +84,19 @@
                     <span
                         class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                </a>
+            </div>
+            <div class="dropdown">
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <i class="fa fa-fw fa-user text-dark mr-3"> </i>
+                    {{\Illuminate\Support\Facades\Auth::user()->name}}
+                @endif
+                <button class="far fa-caret-square-down" type="button" data-toggle="dropdown">
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Setting</a></li>
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                </button>
             </div>
         </div>
 
