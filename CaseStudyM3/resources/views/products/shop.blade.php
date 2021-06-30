@@ -19,7 +19,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6 pb-4">
+            <div class="col-md-5 pb-4">
                 <input id="search-product" class="form-control me-2" type="search"
                        placeholder="Search By Product's Name" aria-label="Search" name="keyword">
                 <ul class="list-group col-6 col-md-4" style="position: absolute" id="list-product-search"></ul>

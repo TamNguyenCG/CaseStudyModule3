@@ -16,10 +16,10 @@ $(document).ready(function () {
                 success: function (res) {
                     let html = '';
                     $.each(res, function (index, item) {
-                        console.log(item)
-                        console.log(index)
-                        html += '<li data-id="'+item.id+'" style="z-index: 1" class="list-group-item list-group-item-action item-product">';
+                        html += '<li data-id="' + item.id + '" style="z-index: 1" class="list-group-item list-group-item-action item-product">';
+                        html += '<a href="'+origin+'/shop/'+item.id+'/detail" style="text-decoration: none">'
                         html += item.name;
+                        html += '</a>';
                         html += '</li>';
                     });
 
@@ -33,6 +33,7 @@ $(document).ready(function () {
         } else {
             $('#list-product-search').html('');
         }
+
     });
 
 
