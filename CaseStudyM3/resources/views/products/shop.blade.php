@@ -3,8 +3,7 @@
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
-
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <ul class="list-inline shop-top-menu pb-3 pt-1">
                     <li class="list-inline-item">
                         <a class="h3 text-dark text-decoration-none mr-3"
@@ -20,16 +19,51 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6 pb-4">
-                <input id="search-product" class="form-control me-2" type="search"
-                       placeholder="Search By Product's Name" aria-label="Search" name="keyword">
+            <div class="col-md-5 pb-4">
+                <input id="search-product" class="form-control me-2 " type="search"
+                       placeholder="Search By Product's Name" aria-label="Search" name="keyword" >
                 <ul class="list-group col-6 col-md-4" style="position: absolute" id="list-product-search"></ul>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 mb-1"><a class="btn btn-primary" href="{{route('products.create')}}">Add New
-                    Product</a></div>
-            <div class="col-md-6"></div>
+            <div class="col-md-6 mb-1">
+                <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Category
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">Select Category</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <table>
+                                    <tr>
+                                        <th>Category:</th>
+                                        <td>
+                                            <select name="" class="form-select">
+                                                <option value="">test</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Choose</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-1"></div>
         </div>
         <div class="row">
             @foreach($allproducts as $product)
@@ -209,5 +243,4 @@
         </div>
     </section>
     <!--End Brands-->
-
 @endsection
