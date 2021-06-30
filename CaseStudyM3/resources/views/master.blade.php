@@ -234,7 +234,7 @@
 <script src="{{asset('assets/js/custom.js')}}"></script>
 <!-- End Script -->
 <!-- Start Slider Script -->
-<script src="assets/js/slick.min.js"></script>
+<script src="{{asset('assets/js/slick.min.js')}}"></script>
 <script>
     $('#carousel-related-product').slick({
         infinite: true,
@@ -265,6 +265,7 @@
             }
         ]
     });
+
 </script>
 <!-- End Slider Script -->
 

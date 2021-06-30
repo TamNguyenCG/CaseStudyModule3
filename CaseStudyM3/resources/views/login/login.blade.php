@@ -31,16 +31,16 @@
                             </div>
                         @endif
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username" name="email" required>
+                            <input type="email" class="form-control border-success" placeholder="Username" name="email" required>
                         </div>
                         <div class="form-group">
-                            <input id="password-field" type="password" class="form-control" placeholder="Password"
+                            <input id="password-field" type="password" class="form-control border-success" placeholder="Password"
                                    name="password" required>
                             <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group d-md-flex">
                             <div class="w-50">
-                                <label class="checkbox-wrap checkbox-primary">Remember Me
+                                <label class="checkbox-wrap checkbox-primary"><span style="color: white">Remember Me</span>
                                     <input type="checkbox">
                                     <span class="checkmark"></span>
                                 </label>
@@ -59,7 +59,7 @@
                         </div>
 
                     </form>
-                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                    <p class="w-100 text-center" style="color: white">&mdash; Or Sign In With &mdash;</p>
                     <div class="d-flex text-center row">
                         <div style="alignment: center" class="col-md-12">
                             <a href="#" class="px-2 py-2 mr-md-1 rounded">
