@@ -138,10 +138,8 @@ class ProductController extends Controller
 
     public function search(Request $request): JsonResponse
     {
-
         $keyword = $request->keyword;
         $products = Product::with('category')->where('name', 'LIKE', '%' . $keyword . '%')->get();
         return response()->json($products);
-
     }
 }
