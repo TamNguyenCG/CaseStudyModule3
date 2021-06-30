@@ -47,5 +47,6 @@ Route::prefix('users')->group(function (){
     Route::post('/login',[AuthController::class,'confirmLogin'])->name('users.confirm');
     Route::get('/register',[UserController::class,'register'])->name('users.register');
     Route::post('/register',[UserController::class,'confirmRegister'])->name('users.confirmRegister');
+    Route::get('/logout',[AuthController::class,'logout'])->name('users.logout');
 });
 

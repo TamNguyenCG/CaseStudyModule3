@@ -93,7 +93,7 @@
                         <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
                            aria-expanded="false"></i>
                         <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                            <li><a class="dropdown-item" href="{{route('users.logout')}}">Log Out</a></li>
                         </ul>
                     </div>
                 @endif
