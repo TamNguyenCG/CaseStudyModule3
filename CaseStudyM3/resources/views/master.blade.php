@@ -36,21 +36,10 @@
                 <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
             </div>
             <div>
-
-
-                @if(\Illuminate\Support\Facades\Auth::user())
-                    <div class="dropdown">
-                        {{\Illuminate\Support\Facades\Auth::user()->name}}
-                        <i class="fa fa-chevron-circle-down " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul class="dropdown-menu dropdown-menu-dark text-center " aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Log Out</a></li>
-                        </ul>
-                    </div>
-
-                @else
-                <a class="text-light text-decoration-none" href="{{route('users.login')}}">Login</a>
-                <span>/</span>
-                <a class="text-light text-decoration-none" href="{{route('users.register')}}">Register</a>
+                @if(!\Illuminate\Support\Facades\Auth::user())
+                    <a class="text-light text-decoration-none" href="{{route('users.login')}}">Login</a>
+                    <span>/</span>
+                    <a class="text-light text-decoration-none" href="{{route('users.register')}}">Register</a>
                 @endif
             </div>
         </div>
@@ -97,11 +86,17 @@
                     <span
                         class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
-                </a>
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <div class="nav-icon position-relative text-decoration-none dropdown" href="#">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        {{\Illuminate\Support\Facades\Auth::user()->name}}
+                        <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"></i>
+                        <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
