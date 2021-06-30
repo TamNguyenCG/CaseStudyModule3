@@ -18,6 +18,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
                 <img src="{{asset('assets/img/apple-icon.png')}}">
+                <p style="color: white">sssssssssss</p>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -26,13 +27,13 @@
                     <form action="{{route('users.confirmRegister')}}" class="signin-form" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Username" name="name" required>
+                            <input type="text" class="form-control border-primary" placeholder="Username" name="name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" name="email" required>
+                            <input type="email" class="form-control border-primary" placeholder="Email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <input id="password-field" type="password" class="form-control" placeholder="Password"
+                            <input id="password-field" type="password" class="form-control border-primary" placeholder="Password"
                                    name="password" required>
                             <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
