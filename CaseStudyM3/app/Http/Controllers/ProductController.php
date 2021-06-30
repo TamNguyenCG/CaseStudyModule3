@@ -44,11 +44,11 @@ class ProductController extends Controller
         $file = $request->file('image');
         if (!$request->hasFile('image')) {
             $product->image = $file;
-            if (!$request->file('image')->getSize()) {
-                $message = 'The image is over size';
-                Session::flash('image_fail', $message);
-                return redirect()->route('products.create');
-            }
+//            if (!$request->file('image')->getSize()) {
+//                $message = 'The image is over size';
+//                Session::flash('image_fail', $message);
+//                return redirect()->route('products.create');
+//            }
         } else {
             $fileName = $file->getClientOriginalName();
             $image = date('Y-m-d H:i:s') . '-' . $fileName;
@@ -135,19 +135,5 @@ class ProductController extends Controller
         return view('styles.women', compact('womenproducts', 'styles'));
     }
 
-    public function search(Request $request): View|Factory|RedirectResponse|Application
-    {
-        $keyword = $request->input('keyword');
-        if (empty($keyword)) {
-            Session::flash('not-found', 'Please insert keyword to search !');
-            return redirect()->route('products.shop');
-        }
-        $allproducts = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        $countProducts = $allproducts->count();
-//        $categories = Category::all();
-//        $brands = Brand::all();
-//        $styles = Style::all();
-        Session::flash('info', "Tìm kiếm được $countProducts sản phẩm với từ khóa là: $keyword");
-        return view('products.shop', compact('allproducts','keyword'));
-    }
+
 }

@@ -21,19 +21,19 @@
             @csrf
         <div class="card-body">
             <div class="form-floating">
-                <input type="text" class="form-control mb-3" placeholder="Product's Name" name="name" >
+                <input type="text" class="form-control mb-3" placeholder="Product's Name" name="name" required>
                 <label for="floatingInput">Product's Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control mb-3" placeholder="Color" name="color">
+                <input type="text" class="form-control mb-3" placeholder="Color" name="color" required>
                 <label for="floatingInput">Color</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control mb-3" placeholder="Price" name="price">
+                <input type="text" class="form-control mb-3" placeholder="Price" name="price" required>
                 <label for="floatingInput">Price ($)</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control mb-3" placeholder="Stocks" name="stocks">
+                <input type="text" class="form-control mb-3" placeholder="Stocks" name="stocks" required>
                 <label for="floatingInput">Stocks</label>
             </div>
             <div class="form-floating mb-3">
@@ -61,10 +61,10 @@
                 <label for="floatingInput">Style</label>
             </div>
             <div class="form-floating mb-3">
-                <input type="file" class="form-control mb-3" placeholder="Image" name="image">
+                <input type="file" class="form-control mb-3" placeholder="Image" name="image" required>
             </div>
             <div class="form-floating">
-                <textarea class="form-control mb-3" name="description" placeholder="Description" cols="30" rows="10"></textarea>
+                <textarea class="form-control mb-3" name="description" placeholder="Description" cols="30" rows="10" required></textarea>
                 <label for="floatingInput">Description</label>
             </div>
             <button class="btn btn-outline-success" type="submit">Save</button>
