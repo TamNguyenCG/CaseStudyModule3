@@ -40,7 +40,7 @@ Route::prefix('shop')->group(function (){
     Route::get('/{id}/detail',[ProductController::class,'detail'])->name('products.detail');
     Route::get('style/men',[ProductController::class,'menProduct'])->name('products.men');
     Route::get('style/women',[ProductController::class,'womenProduct'])->name('products.women');
-    Route::post('/search',[ProductController::class,'search'])->name('products.search');
+    Route::get('/search',[ProductController::class,'search'])->name('products.search');
 });
 Route::prefix('users')->group(function (){
     Route::get('/login',[AuthController::class,'login'])->name('users.login');
