@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -30,6 +31,8 @@ class AuthController extends Controller
             session()->flash('login-error',"Username or Password is incorrect !!!");
             return redirect()->route('users.login');
         }
+
         return redirect()->route('homepage');
     }
+
 }

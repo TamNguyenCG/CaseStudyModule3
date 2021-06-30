@@ -36,12 +36,22 @@
                 <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
             </div>
             <div>
+
+
+                @if(\Illuminate\Support\Facades\Auth::user())
+                    <div class="dropdown">
+                        {{\Illuminate\Support\Facades\Auth::user()->name}}
+                        <i class="fa fa-chevron-circle-down " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                        <ul class="dropdown-menu dropdown-menu-dark text-center " aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Log Out</a></li>
+                        </ul>
+                    </div>
+
+                @else
                 <a class="text-light text-decoration-none" href="{{route('users.login')}}">Login</a>
                 <span>/</span>
                 <a class="text-light text-decoration-none" href="{{route('users.register')}}">Register</a>
-                {{--                <a class="text-light" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fa-sm fa-fw me-2"></i></a>--}}
-                {{--                <a class="text-light" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin fa-sm fa-fw"></i></a>--}}
-
+                @endif
             </div>
         </div>
     </div>
