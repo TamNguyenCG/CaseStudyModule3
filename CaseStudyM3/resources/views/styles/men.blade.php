@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-
+@dd($menproducts)
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">

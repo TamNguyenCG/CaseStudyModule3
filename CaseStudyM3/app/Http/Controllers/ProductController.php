@@ -124,7 +124,7 @@ class ProductController extends Controller
 
     public function menProduct(): Factory|View|Application
     {
-        $menproducts = Product::where('style_id', 1)->paginate(5);
+        $menproducts = Product::with('style')->where('style_id', 1)->paginate(5);
         $styles = Style::all();
         return view('styles.men', compact('menproducts', 'styles'));
     }
