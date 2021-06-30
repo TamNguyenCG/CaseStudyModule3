@@ -84,22 +84,19 @@
                     <span
                         class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
-            </div>
-            <div class="dropdown">
                 @if(\Illuminate\Support\Facades\Auth::user())
-                    <i class="fa fa-fw fa-user text-dark mr-3"> </i>
-                    {{\Illuminate\Support\Facades\Auth::user()->name}}
+                    <div class="nav-icon position-relative text-decoration-none dropdown" href="#">
+                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                        {{\Illuminate\Support\Facades\Auth::user()->name}}
+                        <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
+                           aria-expanded="false"></i>
+                        <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="{{route('users.logout')}}">Log Out</a></li>
+                        </ul>
+                    </div>
                 @endif
-                <button class="far fa-caret-square-down" type="button" data-toggle="dropdown">
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Setting</a></li>
-                        <li><a href="#">Log out</a></li>
-                    </ul>
-                </button>
             </div>
         </div>
-
     </div>
 </nav>
 <!-- Close Header -->
