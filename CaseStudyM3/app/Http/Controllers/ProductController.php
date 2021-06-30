@@ -9,6 +9,7 @@ use App\Models\Style;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -135,19 +136,12 @@ class ProductController extends Controller
         return view('styles.women', compact('womenproducts', 'styles'));
     }
 
-    public function search(Request $request): View|Factory|RedirectResponse|Application
+    public function search(Request $request): JsonResponse
     {
-        $keyword = $request->input('keyword');
-        if (empty($keyword)) {
-            Session::flash('not-found', 'Please insert keyword to search !');
-            return redirect()->route('products.shop');
-        }
-        $allproducts = Product::where('name', 'LIKE', '%' . $keyword . '%')->paginate(5);
-        $countProducts = $allproducts->count();
-//        $categories = Category::all();
-//        $brands = Brand::all();
-//        $styles = Style::all();
-        Session::flash('info', "Tìm kiếm được $countProducts sản phẩm với từ khóa là: $keyword");
-        return view('products.shop', compact('allproducts','keyword'));
+
+        $keyword = $request->keyword;
+        $products = Product::with('category')->where('name', 'LIKE', '%' . $keyword . '%')->get();
+        return response()->json($products);
+
     }
 }

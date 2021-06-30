@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Ajax -->
     <link rel="apple-touch-icon" href="{{asset('assets/img/apple-icon.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
@@ -17,10 +18,11 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
-
     <!-- Slick -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick-theme.css')}}">
+
+
 
 </head>
 
@@ -31,7 +33,7 @@
         <div class="w-100 d-flex justify-content-between">
             <div>
                 <i class="fa fa-envelope mx-2"></i>
-                <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                <a class="navbar-sm-brand text-light text-decoration-none" href="gmail.com">pikomastermind@gmail.com</a>
                 <i class="fa fa-phone mx-2"></i>
                 <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
             </div>
@@ -52,7 +54,7 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow">
     <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+        <a class="navbar-brand text-success logo h1 align-self-center" id="test" >
             Zay
         </a>
 
@@ -99,7 +101,6 @@
                 @endif
             </div>
         </div>
-
     </div>
 </nav>
 <!-- Close Header -->
@@ -225,13 +226,15 @@
 
 </footer>
 <!-- End Footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <!-- Start Script -->
-<script src="{{asset('assets/js/jquery-1.11.0.min.js')}}"></script>
+
 <script src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/templatemo.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="{{asset('js/main.js')}}"></script>
 <!-- End Script -->
 <!-- Start Slider Script -->
 <script src="{{asset('assets/js/slick.min.js')}}"></script>
