@@ -51,3 +51,6 @@ Route::prefix('users')->group(function (){
     Route::get('/logout',[AuthController::class,'logout'])->name('users.logout');
 });
 
+Route::prefix('/category')->group(function (){
+    Route::get('/filter',[ProductController::class, 'getProductByCategoryId'])->name('category.filter');
+});
