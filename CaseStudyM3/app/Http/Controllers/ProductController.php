@@ -20,7 +20,8 @@ class ProductController extends Controller
     {
         $allproducts = Product::paginate(3);
         $categories = Category::all();
-        return view('products.shop', compact('allproducts', 'categories'));
+        $brands = Brand::all();
+        return view('products.shop', compact('allproducts', 'categories','brands'));
     }
 
     public function create(): Factory|View|Application
@@ -45,11 +46,6 @@ class ProductController extends Controller
         $file = $request->file('image');
         if (!$request->hasFile('image')) {
             $product->image = $file;
-//            if (!$request->file('image')->getSize()) {
-//                $message = 'The image is over size';
-//                Session::flash('image_fail', $message);
-//                return redirect()->route('products.create');
-//            }
         } else {
             $fileName = $file->getClientOriginalName();
             $image = date('Y-m-d H:i:s') . '-' . $fileName;
@@ -120,20 +116,6 @@ class ProductController extends Controller
         $brands = Brand::all();
         $styles = Style::all();
         return view('products.detail', compact('product', 'categories', 'brands', 'styles'));
-    }
-
-    public function menProduct(): Factory|View|Application
-    {
-        $menproducts = Product::with('style')->where('style_id', 1)->paginate(5);
-        $styles = Style::all();
-        return view('styles.men', compact('menproducts', 'styles'));
-    }
-
-    public function womenProduct(): Factory|View|Application
-    {
-        $womenproducts = Product::where('style_id', 2)->paginate(5);
-        $styles = Style::all();
-        return view('styles.women', compact('womenproducts', 'styles'));
     }
 
     public function search(Request $request): JsonResponse

@@ -8156,7 +8156,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #fbceb5; }
+  color: #69bb7e; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -8317,7 +8317,7 @@ textarea.form-control {
 
 /* Style the checkmark/indicator */
 .checkbox-primary {
-  color: #fbceb5; }
+  color: #69bb7e; }
   .checkbox-primary input:checked ~ .checkmark:after {
     color: #fbceb5; }
 

@@ -1,9 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Login 10</title>
+    <title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Ajax -->
+    <link rel="apple-touch-icon" href="{{asset('assets/img/apple-icon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
@@ -18,7 +21,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-5">
                 <img src="{{asset('assets/img/apple-icon.png')}}">
-                <p style="color: white">sssssssssss</p>
+                <h1 style="color: lightgoldenrodyellow"><strong>Welcome to ZayShop</strong></h1>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -43,7 +46,7 @@
                             </button>
                         </div>
                     </form>
-                    <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                    <p class="w-100 text-center" style="color: snow">&mdash; Or Sign In With &mdash;</p>
                     <div class="d-flex text-center row">
                         <div style="alignment: center" class="col-md-12">
                             <a href="#" class="px-2 py-2 mr-md-1 rounded">

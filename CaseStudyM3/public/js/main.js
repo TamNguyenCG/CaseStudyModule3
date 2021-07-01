@@ -1,6 +1,5 @@
 $(document).ready(function () {
     let origin = window.origin;
-
     $('#search-product').keyup(function () {
         let value = $(this).val();
         if (value) {
@@ -33,5 +32,6 @@ $(document).ready(function () {
             $('#list-product-search').html('');
         }
     });
+
 });
 

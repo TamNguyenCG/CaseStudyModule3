@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StyleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,8 +39,8 @@ Route::prefix('shop')->group(function (){
     Route::post('/{id}/edit',[ProductController::class,'update'])->name('products.update');
     Route::get('/{id}/delete',[ProductController::class,'delete'])->name('products.destroy');
     Route::get('/{id}/detail',[ProductController::class,'detail'])->name('products.detail');
-    Route::get('style/men',[ProductController::class,'menProduct'])->name('products.men');
-    Route::get('style/women',[ProductController::class,'womenProduct'])->name('products.women');
+    Route::get('style/men',[StyleController::class,'menProduct'])->name('products.men');
+    Route::get('style/women',[StyleController::class,'womenProduct'])->name('products.women');
     Route::get('/search',[ProductController::class,'search'])->name('products.search');
 });
 Route::prefix('users')->group(function (){

@@ -1,5 +1,6 @@
 @extends('master')
 @section('content')
+
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
@@ -30,17 +31,20 @@
                 <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
 
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
                     Category
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 class="modal-title" id="exampleModalLabel">Select Category</h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <table>
@@ -48,23 +52,23 @@
                                         <th>Category:</th>
                                         <td>
                                             <select name="" class="form-select">
-                                                <option value="">test</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                                @endforeach
                                             </select>
                                         </td>
                                     </tr>
-
                                 </table>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Choose</button>
+                                <button type="button" class="btn btn-primary" >Choose</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mb-1"></div>
-        </div>
+            <div class="col-md-6"></div>
         <div class="row">
             @foreach($allproducts as $product)
                 <div class="col-md-3">
@@ -113,7 +117,8 @@
                             <p class="text-center mb-0">${{$product->price}}</p>
                             <div class="row">
                                 <div class="col-12">
-                                    <a class="btn btn-success" href="{{route('products.edit',$product->id)}}">Edit</a>
+                                    <a class="btn btn-success"
+                                       href="{{route('products.edit',$product->id)}}">Edit</a>
                                     <a class="btn btn-danger" onclick="return confirm('Are you sure ?!')"
                                        href="{{route('products.destroy',$product->id)}}">Delete</a>
                                 </div>
