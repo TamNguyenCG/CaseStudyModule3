@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Style;
+use http\Env\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -123,5 +124,17 @@ class ProductController extends Controller
         $keyword = $request->keyword;
         $products = Product::with('category')->where('name', 'LIKE', '%' . $keyword . '%')->get();
         return response()->json($products);
+    }
+
+    public function getProductByCategoryId(Request $request): JsonResponse
+    {
+        $id = $request->id;
+        $category = Category::find($id);
+        $products = $category->products;
+        $data = [
+            'category' => $category,
+            'products' => $products
+        ];
+        return response()->json($data);
     }
 }

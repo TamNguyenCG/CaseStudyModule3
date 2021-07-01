@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
+    public function getCategoryById($id)
+    {
+        return Category::findOrFail($id)->name;
+    }
 }

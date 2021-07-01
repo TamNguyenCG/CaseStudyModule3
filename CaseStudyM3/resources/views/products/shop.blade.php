@@ -51,7 +51,7 @@
                                     <tr>
                                         <th>Category:</th>
                                         <td>
-                                            <select name="" class="form-select">
+                                            <select name="category-select" id="category-select" class="form-select">
                                                 @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
@@ -62,14 +62,14 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary" >Choose</button>
+                                <button type="button" id="category-choose" class="btn btn-primary" >Choose</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-6"></div>
-        <div class="row">
+        <div class="row" id="product-list">
             @foreach($allproducts as $product)
                 <div class="col-md-3">
                     <div class="card mb-4 product-wap rounded-0">
@@ -80,8 +80,7 @@
                                 class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                 <ul class="list-unstyled">
                                     <li><a class="btn btn-success text-white mt-2"
-                                           href="{{route('products.detail',$product->id)}}"><i
-                                                class="far fa-eye"></i></a>
+                                           href="{{route('products.detail',$product->id)}}"><i class="far fa-eye"></i></a>
                                     </li>
                                     <li><a class="btn btn-success text-white mt-2"
                                            href="#"><i class="fas fa-cart-plus"></i></a>
