@@ -69,6 +69,7 @@
                 </div>
             </div>
             <div class="col-md-6"></div>
+            @yield('style')
         <div class="row">
             @foreach($allproducts as $product)
                 <div class="col-md-3">

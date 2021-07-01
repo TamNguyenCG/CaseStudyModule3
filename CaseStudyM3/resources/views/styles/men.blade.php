@@ -1,5 +1,5 @@
-@extends('master')
-@section('content')
+@extends('products.shop')
+@section('style')
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
