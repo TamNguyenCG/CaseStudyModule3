@@ -34,7 +34,7 @@
                 </div>
 
                 <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
-                <a class="btn btn-primary" id="filter">Filter</a>
+                <a class="btn btn-outline-success" id="filter">Filter</a>
             </div>
 
             <div class="col-lg-9">
