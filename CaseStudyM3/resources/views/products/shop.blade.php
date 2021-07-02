@@ -3,37 +3,38 @@
     <!-- Start Content -->
     <div class="container py-5">
         <div class="row">
-
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Filter By</h1>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" id="category" aria-label="Floating label select example">
                         <option selected>Select</option>
                         @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option id="category-select" value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                     <label for="floatingSelect">Category</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" id="style" aria-label="Floating label select example">
                         <option selected>Select</option>
                         @foreach($styles as $style)
-                            <option value="{{$style->id}}">{{$style->name}}</option>
+                            <option id="style-select" value="{{$style->id}}">{{$style->name}}</option>
                         @endforeach
                     </select>
                     <label for="floatingSelect">Gender</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" id="brand" aria-label="Floating label select example">
                         <option selected>Select</option>
                         @foreach($brands as $brand)
-                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            <option id="brand-select" value="{{$brand->id}}">{{$brand->name}}</option>
                         @endforeach
                     </select>
                     <label for="floatingSelect">Brand</label>
                 </div>
+
                 <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
+                <a class="btn btn-primary" id="filter">Filter</a>
             </div>
 
             <div class="col-lg-9">

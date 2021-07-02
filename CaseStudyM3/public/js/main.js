@@ -33,8 +33,9 @@ $(document).ready(function () {
         }
     });
 
-    $('#category-choose').click(function () {
+    $('#category').select(function () {
         let id = $('#category-select').val();
+        console.log(id);
         if (id) {
             $.ajax({
                 url: origin + '/category/filter',
