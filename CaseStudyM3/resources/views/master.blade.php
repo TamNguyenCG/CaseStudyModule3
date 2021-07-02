@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Ajax -->
-    <link rel="stylesheet" href="{{asset('assets/css/style-shop.css')}}">
     <link rel="apple-touch-icon" href="{{asset('assets/img/apple-icon.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.ico')}}">
 
@@ -329,7 +328,6 @@
 
 <!-- Start Script -->
 <script src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
-<script src="{{asset('assets/js/js-shop.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/templatemo.js')}}"></script>
 <script src="{{asset('assets/js/custom.js')}}"></script>

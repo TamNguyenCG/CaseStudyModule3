@@ -6,61 +6,33 @@
 
             <div class="col-lg-3">
                 <h1 class="h2 pb-4">Filter By</h1>
-                <div class="sel sel--black-panther">
-                    <select name="select-profession" id="select-profession">
-                        <option value="" disabled>Category</option>
-                        <option value="hacker">Hacker</option>
-                        <option value="gamer">Gamer</option>
-                        <option value="developer">Developer</option>
-                        <option value="programmer">Programmer</option>
-                        <option value="designer">Designer</option>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>Select</option>
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                     </select>
+                    <label for="floatingSelect">Category</label>
                 </div>
-                <hr class="rule">
-                <div class="sel sel--black-panther">
-                    <select name="select-profession" id="select-profession">
-                        <option value="" disabled>Category</option>
-                        <option value="hacker">Hacker</option>
-                        <option value="gamer">Gamer</option>
-                        <option value="developer">Developer</option>
-                        <option value="programmer">Programmer</option>
-                        <option value="designer">Designer</option>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>Select</option>
+                        @foreach($styles as $style)
+                            <option value="{{$style->id}}">{{$style->name}}</option>
+                        @endforeach
                     </select>
+                    <label for="floatingSelect">Gender</label>
                 </div>
-
-                {{--                <ul class="list-unstyled templatemo-accordion">--}}
-{{--                    <li class="pb-3">--}}
-{{--                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">--}}
-{{--                            Gender--}}
-{{--                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>--}}
-{{--                        </a>--}}
-{{--                        <ul class="collapse show list-unstyled pl-3">--}}
-{{--                            <li><a class="text-decoration-none" href="#">Men</a></li>--}}
-{{--                            <li><a class="text-decoration-none" href="#">Women</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="pb-3">--}}
-{{--                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">--}}
-{{--                            Sale--}}
-{{--                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>--}}
-{{--                        </a>--}}
-{{--                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">--}}
-{{--                            <li><a class="text-decoration-none" href="#">Sport</a></li>--}}
-{{--                            <li><a class="text-decoration-none" href="#">Luxury</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                    <li class="pb-3">--}}
-{{--                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">--}}
-{{--                            Product--}}
-{{--                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>--}}
-{{--                        </a>--}}
-{{--                        <ul id="collapseThree" class="collapse list-unstyled pl-3">--}}
-{{--                            <li><a class="text-decoration-none" href="#">Bag</a></li>--}}
-{{--                            <li><a class="text-decoration-none" href="#">Sweather</a></li>--}}
-{{--                            <li><a class="text-decoration-none" href="#">Sunglass</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                        <option selected>Select</option>
+                        @foreach($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                        @endforeach
+                    </select>
+                    <label for="floatingSelect">Brand</label>
+                </div>
                 <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
             </div>
 
@@ -144,16 +116,15 @@
                             </div>
                         </div>
                     @endforeach
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination" style="float: right">
-                                {{$products->appends(request()->query())}}
-                            </ul>
-                        </nav>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" style="float: right">
+                            {{$products->appends(request()->query())}}
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-            <!-- End Content -->
+    <!-- End Content -->
 @endsection
-
 

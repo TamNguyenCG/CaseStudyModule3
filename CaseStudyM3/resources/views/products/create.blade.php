@@ -64,7 +64,7 @@
                 <input type="file" class="form-control mb-3" placeholder="Image" name="image" required>
             </div>
             <div class="form-floating">
-                <textarea class="form-control mb-3" name="description" placeholder="Description" cols="30" rows="10" required></textarea>
+                <textarea class="form-control mb-3" name="description" placeholder="Description" style="height: 100px" required></textarea>
                 <label for="floatingInput">Description</label>
             </div>
             <button class="btn btn-outline-success" type="submit">Save</button>

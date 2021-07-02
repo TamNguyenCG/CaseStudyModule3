@@ -78,7 +78,7 @@
                     <label for="floatingInput"></label>
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control mb-3" name="description" placeholder="Description" cols="30" rows="10">{{$product->description}}</textarea>
+                    <textarea class="form-control mb-3" name="description" placeholder="Description" style="height: 100px">{{$product->description}}</textarea>
                     <label for="floatingInput">Description</label>
                 </div>
                 <button class="btn btn-outline-success" type="submit">Save</button>
