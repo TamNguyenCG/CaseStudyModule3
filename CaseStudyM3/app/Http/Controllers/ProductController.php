@@ -20,7 +20,7 @@ class ProductController extends Controller
 {
     public function getAllProduct(): Factory|View|Application
     {
-        $products = Product::paginate(9);
+        $products = Product::paginate(12);
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
@@ -162,8 +162,8 @@ class ProductController extends Controller
         $style = Style::findOrFail($id);
         $products= $style->products;
         $data = [
-          'style' => $style,
-          'products' => $products
+            'style' => $style,
+            'products' => $products
         ];
         return response()->json($data);
     }

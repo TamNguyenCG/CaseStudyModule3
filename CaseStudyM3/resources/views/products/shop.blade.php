@@ -45,12 +45,6 @@
                                 <a class="h3 text-dark text-decoration-none mr-3"
                                    href="{{route('products.shop')}}">All</a>
                             </li>
-                            <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Men's</a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none" href="#">Women's</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="col-md-5 pb-4">

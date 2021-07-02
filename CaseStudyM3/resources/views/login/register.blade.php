@@ -30,20 +30,30 @@
                     <form action="{{route('users.confirmRegister')}}" class="signin-form" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control border-primary" placeholder="Username" name="name" required>
+                            <input type="text" class="form-control border-primary" placeholder="Username" name="name"
+                                   required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control border-primary" placeholder="Email" name="email" required>
+                            <input type="email" class="form-control border-primary" placeholder="Email" name="email"
+                                   required>
                         </div>
                         <div class="form-group">
-                            <input id="password-field" type="password" class="form-control border-primary" placeholder="Password"
+                            <input id="password-field" type="password" class="form-control border-primary"
+                                   placeholder="Password"
                                    name="password" required>
                             <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                         </div>
                         <div class="form-group row">
-                            <button type="submit" class="form-control btn btn-primary submit px-3">
-                                Register
-                            </button>
+                            <div class="col-6">
+                                <a href="{{route('users.login')}}">
+                                <button type="button" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">
+                                    Register
+                                </button>
+                            </div>
                         </div>
                     </form>
                     <p class="w-100 text-center" style="color: snow">&mdash; Or Sign In With &mdash;</p>
