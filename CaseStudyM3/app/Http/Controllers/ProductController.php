@@ -20,7 +20,7 @@ class ProductController extends Controller
 {
     public function getAllProduct(): Factory|View|Application
     {
-        $products = Product::paginate(3);
+        $products = Product::paginate(9);
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();

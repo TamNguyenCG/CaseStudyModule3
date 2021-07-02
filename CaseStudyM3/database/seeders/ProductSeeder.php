@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
         $product->color = 'Whitle/Black';
         $product->price = 150;
         $product->stocks = 50;
-        $product->image = "converse5.jpg";
+        $product->image = "converse4.jpg";
         $product->category_id = 1;
         $product->brand_id = 2;
         $product->style_id = 1;
@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
         $product->color = 'Red/Black';
         $product->price = 250;
         $product->stocks = 70;
-        $product->image = "nike6.jpg";
+        $product->image = "nike5.jpg";
         $product->category_id = 2;
         $product->brand_id = 1;
         $product->style_id = 1;
@@ -45,7 +45,7 @@ class ProductSeeder extends Seeder
         $product->color = 'Pink';
         $product->price = 180;
         $product->stocks = 30;
-        $product->image = "6.jpg";
+        $product->image = "4.jpg";
         $product->category_id = 3;
         $product->brand_id = 3;
         $product->style_id = 2;
