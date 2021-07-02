@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('login/css/style.css')}}">
 
 </head>
-<body class="img js-fullheight" style="background-image: url({{asset('image/shop_img_10.jpg')}});">
+<body class="img js-fullheight" style="background-image: url({{asset('image/shop_img_7.jpg')}});">
 <section>
     <div class="container">
         <div class="row justify-content-center">
