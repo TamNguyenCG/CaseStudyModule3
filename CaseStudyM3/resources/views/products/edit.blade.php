@@ -73,7 +73,7 @@
                     <label for="floatingInput">Style</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <img src="{{asset('storage/image/'.$product->image)}}">
+                    <img style="width: 30%;height: 30%" src="{{asset('storage/image/'.$product->image)}}">
                     <input type="file" class="form-control mb-3" placeholder="image" name="image">
                     <label for="floatingInput"></label>
                 </div>
