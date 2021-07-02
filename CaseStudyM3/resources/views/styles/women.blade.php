@@ -18,6 +18,7 @@
                            href="{{route('products.women')}}">Women's</a>
                     </li>
                 </ul>
+                <h2 class="h2 text-success border-bottom pb-3 border-light logo">For Women's</h2>
             </div>
             <div class="col-md-5 pb-4">
                 <input id="search-product" class="form-control me-2" type="search"
@@ -29,38 +30,44 @@
             <div class="col-md-6 mb-1">
                 <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
 
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#womenModal">
                     Category
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="womenModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <form action="{{route('products.filterByCategoryAndStyle',)}}" method="get">
+                        @csrf
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h3 class="modal-title" id="exampleModalLabel">Select Category</h3>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <table>
-                                    <tr>
-                                        <th>Category:</th>
-                                        <td>
-                                            <select name="" class="form-select">
-                                                <option value="">test</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-
-                                </table>
+                                    <table>
+                                        <tr>
+                                            <th>Category:</th>
+                                            <td>
+                                                <select name="category-select" id="category-select" class="form-select">
+                                                    @foreach($categories as $category)
+                                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
                             </div>
                             <div class="modal-footer">
+                                <button type="submit" id="category-choose" class="btn btn-primary">Choose</button>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Choose</button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="col-md-6 mb-1"></div>

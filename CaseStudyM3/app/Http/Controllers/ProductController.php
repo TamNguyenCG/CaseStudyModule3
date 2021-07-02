@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\City;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Style;
-use http\Env\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -19,10 +20,11 @@ class ProductController extends Controller
 {
     public function getAllProduct(): Factory|View|Application
     {
-        $allproducts = Product::paginate(3);
+        $products = Product::paginate(3);
         $categories = Category::all();
         $brands = Brand::all();
-        return view('products.shop', compact('allproducts', 'categories','brands'));
+        $styles = Style::all();
+        return view('products.shop', compact('products', 'categories', 'brands','styles'));
     }
 
     public function create(): Factory|View|Application
@@ -119,6 +121,22 @@ class ProductController extends Controller
         return view('products.detail', compact('product', 'categories', 'brands', 'styles'));
     }
 
+//    public function menProduct(): Factory|View|Application
+//    {
+//        $menproducts = Product::where('style_id', 1)->paginate(5);
+//        $categories = Category::all();
+//        $styles = Style::all();
+//        return view('styles.men', compact('menproducts','styles','categories'));
+//    }
+//
+//    public function womenProduct(): Factory|View|Application
+//    {
+//        $womenproducts = Product::where('style_id', 2)->paginate(5);
+//        $categories = Category::all();
+//        $styles = Style::all();
+//        return view('styles.women', compact('womenproducts', 'styles','categories'));
+//    }
+
     public function search(Request $request): JsonResponse
     {
         $keyword = $request->keyword;
@@ -129,7 +147,7 @@ class ProductController extends Controller
     public function getProductByCategoryId(Request $request): JsonResponse
     {
         $id = $request->id;
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         $products = $category->products;
         $data = [
             'category' => $category,
@@ -137,4 +155,42 @@ class ProductController extends Controller
         ];
         return response()->json($data);
     }
+
+    public function getProductByStyleId(Request $request): JsonResponse
+    {
+        $id = $request->id;
+        $style = Style::findOrFail($id);
+        $products= $style->products;
+        $data = [
+          'style' => $style,
+          'products' => $products
+        ];
+        return response()->json($data);
+    }
+
+//    public function filterByCategory(Request $request): Factory|View|Application
+//    {
+//        $idCategory = $request->input('category_id');
+//        $categoryFilter = Category::findOrFail($idCategory);
+//
+//        $products = Product::where('category_id', $categoryFilter->id)->paginate(5);
+//        $totalProductFilter = count($products);
+//        $categories = Category::all();
+//
+//        return view('products.shop', compact('products', 'categories', 'categoryFilter'));
+//    }
+
+//    public function filterByStyle(Request $request): Factory|View|Application
+//    {
+//
+//        $idStyle = $request->input('style_id');
+//
+//        $styleFilter = Style::findOrFail($idStyle);
+//
+//        $products = Product::where('style_id', $styleFilter->id)->paginate(5);
+//        $totalProductFilter = count($products);
+//        $styles = Style::all();
+//
+//        return view('products.shop', compact('products', 'styles', 'styleFilter'));
+//    }
 }

@@ -13,6 +13,6 @@ class Style extends Model
 
     public function products(): HasMany
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'style_id');
     }
 }

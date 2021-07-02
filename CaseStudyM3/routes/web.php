@@ -53,4 +53,5 @@ Route::prefix('users')->group(function (){
 
 Route::prefix('/category')->group(function (){
     Route::get('/filter',[ProductController::class, 'getProductByCategoryId'])->name('category.filter');
+    Route::get('/style',[ProductController::class,'getProductByStyleId'])->name('style.filter');
 });
