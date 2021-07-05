@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\UserController;
@@ -33,15 +34,10 @@ Route::get('/contact', function () {
 
 Route::prefix('shop')->group(function (){
     Route::get('/', [ProductController::class, 'getAllProduct'])->name('products.shop');
-    Route::get('/create', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/create', [ProductController::class, 'store'])->name('products.store');
-    Route::get('/{id}/edit',[ProductController::class,'edit'])->name('products.edit');
-    Route::post('/{id}/edit',[ProductController::class,'update'])->name('products.update');
-    Route::get('/{id}/delete',[ProductController::class,'delete'])->name('products.destroy');
     Route::get('/{id}/detail',[ProductController::class,'detail'])->name('products.detail');
     Route::get('style/men',[StyleController::class,'menProduct'])->name('products.men');
     Route::get('style/women',[StyleController::class,'womenProduct'])->name('products.women');
-    Route::get('/search',[ProductController::class,'search'])->name('products.search');
+
 });
 Route::prefix('users')->group(function (){
     Route::get('/login',[AuthController::class,'login'])->name('users.login');
@@ -54,4 +50,15 @@ Route::prefix('users')->group(function (){
 Route::prefix('/category')->group(function (){
     Route::get('/filter',[ProductController::class, 'getProductByCategoryId'])->name('category.filter');
     Route::get('/style',[ProductController::class,'getProductByStyleId'])->name('style.filter');
+});
+
+Route::prefix('admin')->group(function (){
+    Route::get('manager',[HomeController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/products',[HomeController::class,'getAll'])->name('admin.products-list');
+    Route::get('/create', [ProductController::class, 'create'])->name('admin.create');
+    Route::post('/create', [ProductController::class, 'store'])->name('admin.store');
+    Route::get('/{id}/edit',[ProductController::class,'edit'])->name('admin.edit');
+    Route::post('/{id}/edit',[ProductController::class,'update'])->name('admin.update');
+    Route::get('/destroy',[ProductController::class,'destroy'])->name('admin.destroy');
+    Route::get('/search',[ProductController::class,'search'])->name('admin.search');
 });

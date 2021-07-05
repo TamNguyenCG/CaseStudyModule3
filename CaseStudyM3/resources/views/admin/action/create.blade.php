@@ -1,4 +1,4 @@
-@extends('master')
+@extends('admin.master')
 @section('content')
     <!doctype html>
 <html lang="en">
@@ -17,7 +17,7 @@
         <div class="card-header">
             <h1>Add Product</h1>
         </div>
-        <form action="{{route('products.store')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.store')}}" method="post" enctype="multipart/form-data">
             @csrf
         <div class="card-body">
             <div class="form-floating">

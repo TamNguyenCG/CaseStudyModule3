@@ -95,7 +95,9 @@
                         <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
                            aria-expanded="false"></i>
                         <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="{{route('users.logout')}}">Log Out</a></li>
+                            <li><i class="fas fa-user-cog"></i><a href="{{route('admin.dashboard')}}" style="text-decoration: none"> Setting</a></li>
+                            <hr>
+                            <li><i class="fas fa-sign-out-alt"></i><a style="text-decoration: none" href="{{route('users.logout')}}"> Log Out</a></li>
                         </ul>
                     </div>
                 @endif
