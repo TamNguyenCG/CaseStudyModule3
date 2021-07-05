@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
         $product->color = 'Red/Black';
         $product->price = 250;
         $product->stocks = 70;
-        $product->image = "nike5.jpg";
+        $product->image = "nikeair5.jpg";
         $product->category_id = 2;
         $product->brand_id = 1;
         $product->style_id = 1;

@@ -42,6 +42,7 @@ Route::prefix('shop')->group(function (){
     Route::get('style/men',[StyleController::class,'menProduct'])->name('products.men');
     Route::get('style/women',[StyleController::class,'womenProduct'])->name('products.women');
     Route::get('/search',[ProductController::class,'search'])->name('products.search');
+    Route::get('/filter',[ProductController::class,'filter'])->name('products.filter');
 });
 Route::prefix('users')->group(function (){
     Route::get('/login',[AuthController::class,'login'])->name('users.login');
@@ -51,7 +52,3 @@ Route::prefix('users')->group(function (){
     Route::get('/logout',[AuthController::class,'logout'])->name('users.logout');
 });
 
-Route::prefix('/category')->group(function (){
-    Route::get('/filter',[ProductController::class, 'getProductByCategoryId'])->name('category.filter');
-    Route::get('/style',[ProductController::class,'getProductByStyleId'])->name('style.filter');
-});

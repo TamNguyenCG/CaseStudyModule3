@@ -7,7 +7,7 @@
                 <h1 class="h2 pb-4">Filter By</h1>
                 <div class="form-floating mb-3">
                     <select class="form-select" id="category" aria-label="Floating label select example">
-                        <option selected>Select</option>
+                        <option value="" selected>Select</option>
                         @foreach($categories as $category)
                             <option id="category-select" value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" id="style" aria-label="Floating label select example">
-                        <option selected>Select</option>
+                        <option value="" selected>Select</option>
                         @foreach($styles as $style)
                             <option id="style-select" value="{{$style->id}}">{{$style->name}}</option>
                         @endforeach
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" id="brand" aria-label="Floating label select example">
-                        <option selected>Select</option>
+                        <option value="" selected>Select</option>
                         @foreach($brands as $brand)
                             <option id="brand-select" value="{{$brand->id}}">{{$brand->name}}</option>
                         @endforeach
@@ -53,7 +53,7 @@
                         <ul class="list-group col-6 col-md-4" style="position: absolute" id="list-product-search"></ul>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="product-list">
                     @foreach($products as $product)
                         <div class="col-md-4">
                             <div class="card mb-4 product-wap rounded-0">
@@ -122,4 +122,3 @@
     </div>
     <!-- End Content -->
 @endsection
-
