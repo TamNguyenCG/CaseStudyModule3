@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Style;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -24,7 +25,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('products.shop', compact('products', 'categories', 'brands','styles'));
+        return view('products.shop', compact('products', 'categories', 'brands', 'styles'));
     }
 
     public function create(): Factory|View|Application
@@ -144,28 +145,69 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-    public function getProductByCategoryId(Request $request): JsonResponse
-    {
-        $id = $request->id;
-        $category = Category::findOrFail($id);
-        $products = $category->products;
-        $data = [
-            'category' => $category,
-            'products' => $products
-        ];
-        return response()->json($data);
-    }
 
-    public function getProductByStyleId(Request $request): JsonResponse
+    public function filter(Request $request): JsonResponse
     {
-        $id = $request->id;
-        $style = Style::findOrFail($id);
-        $products= $style->products;
-        $data = [
-          'style' => $style,
-          'products' => $products
-        ];
-        return response()->json($data);
+       /* $data = $request->all();
+
+        $arrFilter = [];
+
+        foreach ($data as  $value) {
+            if (!empty($value)) {
+                array_push($arrFilter, $value);
+            }
+        }
+
+       $sql = User::query();
+
+        foreach ($arrFilter as $key =>  $filter) {
+            $sql->where($key,'=', $filter);
+        }
+
+        $user = $sql->with('category', 'style', 'brand')->get();*/
+
+        $cateId = $request->cateId;
+        $styleId = $request->styleId;
+        $brandId = $request->brandId;
+        if ($cateId) {
+            if ($styleId) {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('style_id', '=', $styleId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('style_id', '=', $styleId)
+                        ->get();
+                }
+            } else {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->get();
+                }
+            }
+        } else {
+            if ($styleId) {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
+                        ->get();
+                }
+            } else if ($brandId) {
+                $products = Product::with('category', 'style', 'brand')
+                    ->where('brand_id', '=', $brandId)
+                    ->get();
+            }
+        }
+        return response()->json($products);
     }
 
 
@@ -206,4 +248,5 @@ class ProductController extends Controller
 //
 //        return view('products.shop', compact('products', 'styles', 'styleFilter'));
 //    }
+
 }

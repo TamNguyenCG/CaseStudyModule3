@@ -33,24 +33,34 @@ $(document).ready(function () {
         }
     });
 
-    $('#category').select(function () {
-        let id = $('#category-select').val();
-        console.log(id);
-        if (id) {
+    $('#filter').click(function () {
+        let cateId = $('#category').val();
+        let styleId = $('#style').val();
+        let brandId = $('#brand').val();
+        console.log(cateId);
+        console.log(styleId);
+        console.log(brandId);
+        if (cateId||styleId||brandId) {
             $.ajax({
-                url: origin + '/category/filter',
+                url: origin + '/shop/filter',
                 method: 'GET',
                 data: {
-                    id: id
+                    cateId: cateId,
+                    styleId: styleId,
+                    brandId: brandId
                 },
                 // goi ajax thanh cong
                 success: function (res) {
+                    console.log(res);
                     let html = '';
-                    let category = res.category;
-                    let products = res.products;
-                    $.each(products, function (index, item) {
-                        console.log(item);
-                        html += '<div class="col-md-3"><div class="card mb-4 product-wap rounded-0"><div class="card rounded-0">';
+                    $.each(res, function (index, item) {
+                        let category = item.category;
+                        let style = item.style;
+                        let brand = item.brand;
+                        console.log(category);
+                        console.log(style);
+                        console.log(brand);
+                        html += '<div class="col-md-3" style="width: 280px"><div class="card mb-4 product-wap rounded-0"><div class="card rounded-0">';
                         html += '<img class="card-img rounded-0 img-fluid" style="height: 250px" src="' + origin + '/storage/image/' + item.image + '">';
                         html += '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
                         html += '<ul class="list-unstyled">';
@@ -61,10 +71,11 @@ $(document).ready(function () {
                         html += '<a href="' + origin + '/shop/' + item.id + '/detail" class="h3 text-decoration-none" style="text-align: center">' + item.name + '</a>';
                         html += '<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">';
                         html += '<li><p class="text-center mb-0"><span class="badge bg-danger">' + category.name + '</span></p></li>';
+                        html += '<li><p class="text-center mb-0"><span class="badge bg-danger">' + brand.name + '</span></p></li>';
                         html += '<li><i class="far fa-eye">' + item.view_count + '</i></li></ul>';
                         html += '<ul class="list-unstyled d-flex justify-content-center mb-1"><li><i class="text-warning fa fa-star"></i><i class="text-warning fa fa-star"></i>' +
                             '<i class="text-warning fa fa-star"></i><i class="text-muted fa fa-star"></i><i class="text-muted fa fa-star"></i></li></ul>';
-                        html += '<p class="text-center mb-0">' + item.price + '</p>';
+                        html += '<p class="text-center mb-0"> $' + item.price + '</p>';
                         html += '<div class="row"><div class="col-12"><a class="btn btn-success" href="' + origin + '/shop/' + item.id + '/edit">Edit</a>';
                         html += '<a class="btn btn-danger" onclick="return confirm(\'Are you sure ?!\')" href="' + origin + '/shop/' + item.id + '/delete">Delete</a>';
                         html += '</div></div></div></div></div></div>'
@@ -76,8 +87,6 @@ $(document).ready(function () {
                     alert("error");
                 }
             })
-        } else {
-            $('#product-list').html('');
         }
     });
 
