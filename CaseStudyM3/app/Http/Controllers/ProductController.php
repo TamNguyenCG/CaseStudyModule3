@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Style;
+use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -147,6 +148,24 @@ class ProductController extends Controller
 
     public function filter(Request $request): JsonResponse
     {
+       /* $data = $request->all();
+
+        $arrFilter = [];
+
+        foreach ($data as  $value) {
+            if (!empty($value)) {
+                array_push($arrFilter, $value);
+            }
+        }
+
+       $sql = User::query();
+
+        foreach ($arrFilter as $key =>  $filter) {
+            $sql->where($key,'=', $filter);
+        }
+
+        $user = $sql->with('category', 'style', 'brand')->get();*/
+
         $cateId = $request->cateId;
         $styleId = $request->styleId;
         $brandId = $request->brandId;
@@ -158,13 +177,13 @@ class ProductController extends Controller
                         ->where('brand_id', '=', $brandId)
                         ->get();
                 } else {
-                    $products = Product::with('category', 'style')->where('category_id', '=', $cateId)
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
                         ->where('style_id', '=', $styleId)
                         ->get();
                 }
             } else {
                 if ($brandId) {
-                    $products = Product::with('category', 'brand')->where('category_id', '=', $cateId)
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
                         ->where('brand_id', '=', $brandId)
                         ->get();
                 } else {
@@ -175,7 +194,7 @@ class ProductController extends Controller
         } else {
             if ($styleId) {
                 if ($brandId) {
-                    $products = Product::with('style', 'brand')->where('style_id', '=', $styleId)
+                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
                         ->where('brand_id', '=', $brandId)
                         ->get();
                 } else {
