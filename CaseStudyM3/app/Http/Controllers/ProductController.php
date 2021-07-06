@@ -148,23 +148,23 @@ class ProductController extends Controller
 
     public function filter(Request $request): JsonResponse
     {
-       /* $data = $request->all();
+        /* $data = $request->all();
 
-        $arrFilter = [];
+         $arrFilter = [];
 
-        foreach ($data as  $value) {
-            if (!empty($value)) {
-                array_push($arrFilter, $value);
-            }
-        }
+         foreach ($data as  $value) {
+             if (!empty($value)) {
+                 array_push($arrFilter, $value);
+             }
+         }
 
-       $sql = User::query();
+        $sql = User::query();
 
-        foreach ($arrFilter as $key =>  $filter) {
-            $sql->where($key,'=', $filter);
-        }
+         foreach ($arrFilter as $key =>  $filter) {
+             $sql->where($key,'=', $filter);
+         }
 
-        $user = $sql->with('category', 'style', 'brand')->get();*/
+         $user = $sql->with('category', 'style', 'brand')->get();*/
 
         $cateId = $request->cateId;
         $styleId = $request->styleId;
@@ -214,14 +214,14 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $id = $request->id;
-        for ($i=0;$i<count($id);$i++) {
+        for ($i = 0; $i < count($id); $i++) {
             $product = Product::findOrFail($id[$i]);
             if (!empty($product->image)) {
                 unlink('storage/image/' . $product->image);
             }
             $product->delete();
-            Session::flash('warning', 'delete success');
         }
+        Session::flash('warning', 'delete success');
     }
 //    public function filterByCategory(Request $request): Factory|View|Application
 //    {

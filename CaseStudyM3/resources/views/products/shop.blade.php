@@ -43,11 +43,11 @@
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
                                 <a class="h3 text-dark text-decoration-none mr-3"
-                                   href="{{route('products.shop')}}">All</a>
+                                   href="{{route('products.shop')}}">All Products</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="col-md-5 pb-4">
+                    <div class="col-md-6 pb-4">
                         <input id="search-product" class="form-control me-2" type="search"
                                placeholder="Search By Product's Name" aria-label="Search" name="keyword">
                         <ul class="list-group col-6 col-md-4" style="position: absolute" id="list-product-search"></ul>
@@ -99,14 +99,6 @@
                                         </li>
                                     </ul>
                                     <p class="text-center mb-0">${{$product->price}}</p>
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-12">--}}
-{{--                                            <a class="btn btn-success"--}}
-{{--                                               href="{{route('products.edit',$product->id)}}">Edit</a>--}}
-{{--                                            <a class="btn btn-danger" onclick="return confirm('Are you sure ?!')"--}}
-{{--                                               href="{{route('products.destroy',$product->id)}}">Delete</a>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>

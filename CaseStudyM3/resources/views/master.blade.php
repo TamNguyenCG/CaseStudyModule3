@@ -85,8 +85,6 @@
             <div class="navbar align-self-center d-flex">
                 <a class="nav-icon position-relative text-decoration-none" href="#">
                     <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                    <span
-                        class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
                 @if(\Illuminate\Support\Facades\Auth::user())
                     <div class="nav-icon position-relative text-decoration-none dropdown" href="#">
@@ -115,10 +113,6 @@
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
                 <h1 class="h1">Our Brands</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
-                </p>
             </div>
             <div class="col-lg-9 m-auto tempaltemo-carousel">
                 <div class="row d-flex flex-row">

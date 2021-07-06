@@ -13,8 +13,8 @@
                 </div>
                 <div class="card-body">
                     <a href="{{route('admin.create')}}" class="btn btn-outline-primary mb-2"><i class="fas fa-plus"></i></a>
-                    <a href="#" class="btn btn-outline-danger mb-2" id="delete"><i
-                            class="fas fa-trash-alt"></i></a>
+                    <button onclick="return confirm('Are you sure ?!')" class="btn btn-outline-danger mb-2" id="delete"><i
+                            class="fas fa-trash-alt"></i></button>
                     <table class="table">
                         <thead class="table-dark">
                         <th>
@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                         @foreach($products as $product)
-                            <tr>
+                            <tr id="delete-{{$product->id}}">
                                 <td>
                                     <input type="checkbox" value="{{$product->id}}" class="delete-checkbox"
                                            name="checkbox[]">
@@ -64,16 +64,18 @@
                 let id = $('.delete-checkbox:checked').map(function (_, el) {
                     return $(el).val();
                 }).get();
+                console.log(id)
                 if (id) {
-                    console.log(id);
-                    console.log(origin);
                     $.ajax({
                         url: origin + '/admin/destroy',
-                        method: 'GET',
+                        type: 'GET',
                         data: {
                             id: id
                         },
-                        success: function (res) {
+                        success: function () {
+                            $.each(id,function (index , id){
+                                $('#delete-'+id).remove()
+                            })
                         },
                         error: function () {
                             alert("choose at least one product to delete");
