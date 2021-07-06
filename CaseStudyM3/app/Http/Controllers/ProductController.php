@@ -207,6 +207,7 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
+        dd($request);
         $id = $request->id;
         for ($i=0;$i<count($id);$i++) {
             $product = Product::findOrFail($id[$i]);
@@ -214,33 +215,6 @@ class ProductController extends Controller
                 unlink('storage/image/' . $product->image);
             }
             $product->delete();
-            Session::flash('warning', 'delete success');
         }
     }
-//    public function filterByCategory(Request $request): Factory|View|Application
-//    {
-//        $idCategory = $request->input('category_id');
-//        $categoryFilter = Category::findOrFail($idCategory);
-//
-//        $products = Product::where('category_id', $categoryFilter->id)->paginate(5);
-//        $totalProductFilter = count($products);
-//        $categories = Category::all();
-//
-//        return view('products.shop', compact('products', 'categories', 'categoryFilter'));
-//    }
-
-//    public function filterByStyle(Request $request): Factory|View|Application
-//    {
-//
-//        $idStyle = $request->input('style_id');
-//
-//        $styleFilter = Style::findOrFail($idStyle);
-//
-//        $products = Product::where('style_id', $styleFilter->id)->paginate(5);
-//        $totalProductFilter = count($products);
-//        $styles = Style::all();
-//
-//        return view('products.shop', compact('products', 'styles', 'styleFilter'));
-//    }
-
 }
