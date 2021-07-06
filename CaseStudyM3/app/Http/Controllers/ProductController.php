@@ -17,6 +17,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
+
         return view('products.shop', compact('products', 'categories', 'brands', 'styles'));
     }
 
@@ -34,7 +36,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action.create', compact('categories', 'brands', 'styles'));
+        return view('admin.action-product.create', compact('categories', 'brands', 'styles'));
     }
 
 
@@ -59,18 +61,7 @@ class ProductController extends Controller
         }
         $product->description = $request->input('description');
         $product->save();
-        Session::flash('success', 'Save new product success !');
-        return redirect()->route('admin.products-list');
-    }
-
-    public function delete($id): RedirectResponse
-    {
-        $product = Product::findOrFail($id);
-        if (!empty($product->image)) {
-            unlink('storage/image/' . $product->image);
-        }
-        $product->delete();
-        Session::flash('warning', 'delete success');
+        toastr()->success('Save new product success');
         return redirect()->route('admin.products-list');
     }
 
@@ -80,7 +71,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action.edit', compact('product', 'categories', 'brands', 'styles'));
+        return view('admin.action-product.edit', compact('product', 'categories', 'brands', 'styles'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -105,7 +96,7 @@ class ProductController extends Controller
         }
         $product->description = $request->input('description');
         $product->save();
-        Session::flash('success', 'Edit product success !');
+        toastr()->success('Edit product success!');
         return redirect()->route('admin.products-list');
     }
 
@@ -143,55 +134,11 @@ class ProductController extends Controller
         }
         $products = $sql->with('category', 'style', 'brand')->get();
         return response()->json($products);
-
-        /*$cateId = $request->cateId;
-        $styleId = $request->styleId;
-        $brandId = $request->brandId;
-        if ($cateId) {
-            if ($styleId) {
-                if ($brandId) {
-                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
-                        ->where('style_id', '=', $styleId)
-                        ->where('brand_id', '=', $brandId)
-                        ->get();
-                } else {
-                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
-                        ->where('style_id', '=', $styleId)
-                        ->get();
-                }
-            } else {
-                if ($brandId) {
-                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
-                        ->where('brand_id', '=', $brandId)
-                        ->get();
-                } else {
-                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
-                        ->get();
-                }
-            }
-        } else {
-            if ($styleId) {
-                if ($brandId) {
-                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
-                        ->where('brand_id', '=', $brandId)
-                        ->get();
-                } else {
-                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
-                        ->get();
-                }
-            } else if ($brandId) {
-                $products = Product::with('category', 'style', 'brand')
-                    ->where('brand_id', '=', $brandId)
-                    ->get();
-            }
-        }
-        return response()->json($products);*/
     }
 
 
     public function destroy(Request $request)
     {
-        dd($request);
         $id = $request->id;
         for ($i = 0; $i < count($id); $i++) {
             $product = Product::findOrFail($id[$i]);
@@ -200,6 +147,5 @@ class ProductController extends Controller
             }
             $product->delete();
         }
-        Session::flash('warning', 'delete success');
     }
 }

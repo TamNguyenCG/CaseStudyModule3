@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StyleController;
@@ -62,4 +63,6 @@ Route::prefix('admin')->group(function (){
     Route::post('/{id}/edit',[ProductController::class,'update'])->name('admin.update');
     Route::get('/destroy',[ProductController::class,'destroy'])->name('admin.destroy');
     Route::get('/search',[ProductController::class,'search'])->name('admin.search');
+
+    Route::get('category',[CategoryController::class,'getAllCategory'])->name('admin.categories');
 });

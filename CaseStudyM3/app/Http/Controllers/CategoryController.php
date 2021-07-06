@@ -11,5 +11,9 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-
+    public function getAllCategory(): Factory|View|Application
+    {
+        $categories = Category::all();
+        return view('admin.list-category',compact('categories'));
+    }
 }
