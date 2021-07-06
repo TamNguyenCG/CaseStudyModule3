@@ -40,7 +40,7 @@ $(document).ready(function () {
         console.log(cateId);
         console.log(styleId);
         console.log(brandId);
-        if (cateId||styleId||brandId) {
+        if (cateId || styleId || brandId) {
             $.ajax({
                 url: origin + '/shop/filter',
                 method: 'GET',
@@ -100,12 +100,15 @@ $(document).ready(function () {
                 data: {
                     id: style_id
                 },
-                success: function (res){
+                success: function (res) {
                     console.log(res);
                     let html = '';
+                    $.each(res, function (index, item) {
+
+                    })
 
                 },
-                error: function (){
+                error: function () {
                     alert('error');
                 }
             })

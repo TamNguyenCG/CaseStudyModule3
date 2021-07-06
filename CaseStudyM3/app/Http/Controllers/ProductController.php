@@ -123,21 +123,6 @@ class ProductController extends Controller
         return view('products.detail', compact('product', 'categories', 'brands', 'styles'));
     }
 
-//    public function menProduct(): Factory|View|Application
-//    {
-//        $menproducts = Product::where('style_id', 1)->paginate(5);
-//        $categories = Category::all();
-//        $styles = Style::all();
-//        return view('styles.men', compact('menproducts','styles','categories'));
-//    }
-//
-//    public function womenProduct(): Factory|View|Application
-//    {
-//        $womenproducts = Product::where('style_id', 2)->paginate(5);
-//        $categories = Category::all();
-//        $styles = Style::all();
-//        return view('styles.women', compact('womenproducts', 'styles','categories'));
-//    }
 
     public function search(Request $request): JsonResponse
     {
@@ -158,7 +143,6 @@ class ProductController extends Controller
         }
         $products = $sql->with('category', 'style', 'brand')->get();
         return response()->json($products);
-
 
         /*$cateId = $request->cateId;
         $styleId = $request->styleId;
@@ -209,12 +193,13 @@ class ProductController extends Controller
     {
         dd($request);
         $id = $request->id;
-        for ($i=0;$i<count($id);$i++) {
+        for ($i = 0; $i < count($id); $i++) {
             $product = Product::findOrFail($id[$i]);
             if (!empty($product->image)) {
                 unlink('storage/image/' . $product->image);
             }
             $product->delete();
         }
+        Session::flash('warning', 'delete success');
     }
 }
