@@ -111,7 +111,8 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('products.detail', compact('product', 'categories', 'brands', 'styles'));
+        $products = Product::all();
+        return view('products.detail', compact('product', 'categories', 'brands', 'styles','products'));
     }
 
 

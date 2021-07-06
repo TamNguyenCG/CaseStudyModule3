@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -76,4 +77,12 @@ Route::prefix('admin')->group(function (){
         Route::get('/destroy',[CategoryController::class,'destroy'])->name('admin.category-destroy');
     });
 
+    Route::prefix('brand')->group(function (){
+        Route::get('/',[BrandController::class,'getAllBrand'])->name('admin.brands');
+        Route::get('create', [BrandController::class, 'create'])->name('admin.brand-create');
+        Route::post('create', [BrandController::class, 'store'])->name('admin.brand-store');
+        Route::get('/{id}/edit',[BrandController::class,'edit'])->name('admin.brand-edit');
+        Route::post('/{id}/edit',[BrandController::class,'update'])->name('admin.brand-update');
+        Route::get('/destroy',[BrandController::class,'destroy'])->name('admin.brand-destroy');
+    });
 });

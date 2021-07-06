@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let origin = window.origin;
+    // Shop-search
     $('#search-product').keyup(function () {
         let value = $(this).val();
         if (value) {
@@ -33,6 +34,7 @@ $(document).ready(function () {
         }
     });
 
+    // Filter
     $('#filter').click(function () {
         let cateId = $('#category').val();
         let styleId = $('#style').val();
@@ -76,9 +78,7 @@ $(document).ready(function () {
                         html += '<ul class="list-unstyled d-flex justify-content-center mb-1"><li><i class="text-warning fa fa-star"></i><i class="text-warning fa fa-star"></i>' +
                             '<i class="text-warning fa fa-star"></i><i class="text-muted fa fa-star"></i><i class="text-muted fa fa-star"></i></li></ul>';
                         html += '<p class="text-center mb-0"> $' + item.price + '</p>';
-                        html += '<div class="row"><div class="col-12"><a class="btn btn-success" href="' + origin + '/shop/' + item.id + '/edit">Edit</a>';
-                        html += '<a class="btn btn-danger" onclick="return confirm(\'Are you sure ?!\')" href="' + origin + '/shop/' + item.id + '/delete">Delete</a>';
-                        html += '</div></div></div></div></div></div>'
+                        html += '</div></div></div></div></div>'
                     });
                     $('#product-list').html(html);
                 },
@@ -114,11 +114,11 @@ $(document).ready(function () {
             })
         }
     })
-
+    // Checkbox selected
     $('body').on('click', '#checkAll', function () {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
-
+    // Delete product
     $('#delete').click(function () {
         if (confirm('Are you sure ?')) {
             let id = $('.delete-checkbox:checked').map(function (_, el) {
@@ -143,5 +143,59 @@ $(document).ready(function () {
             }
         }
     })
+    // Delete category
+    $('#delete_category').click(function () {
+        if (confirm('Are you sure ?')) {
+            let id = $('.checkbox-category:checked').map(function (_, el) {
+                return $(el).val();
+            }).get();
+            console.log(id);
+            if (id) {
+                $.ajax({
+                    url: origin + '/admin/category/destroy',
+                    method: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function () {
+                        $.each(id, function (index, id) {
+                            $('#delete-' + id).remove()
+                        })
+                        toastr.success('Delete category success !')
+                    },
+                    error: function () {
+                        alert('Error');
+                    }
+                })
+            }
+        }
+    })
 
+    // Delete brand
+    $('#delete_brand').click(function () {
+        if (confirm('Are you sure ?')) {
+            let id = $('.checkbox-brand:checked').map(function (_, el) {
+                return $(el).val();
+            }).get();
+            console.log(id);
+            if (id) {
+                $.ajax({
+                    url: origin + '/admin/brand/destroy',
+                    method: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function () {
+                        $.each(id, function (index, id) {
+                            $('#delete-' + id).remove()
+                        })
+                        toastr.success('Delete brand success !')
+                    },
+                    error: function () {
+                        alert('Error');
+                    }
+                })
+            }
+        }
+    })
 });
