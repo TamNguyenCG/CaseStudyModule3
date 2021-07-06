@@ -9,6 +9,7 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Style;
 use App\Models\User;
+use http\Env\Response;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -148,25 +149,18 @@ class ProductController extends Controller
 
     public function filter(Request $request): JsonResponse
     {
-       /* $data = $request->all();
-
-        $arrFilter = [];
-
-        foreach ($data as  $value) {
+        $data = $request->all();
+        $sql = Product::query();
+        foreach ($data as $key => $value) {
             if (!empty($value)) {
-                array_push($arrFilter, $value);
+                $sql->where($key,'=', $value);
             }
         }
+        $products = $sql->with('category', 'style', 'brand')->get();
+        return response()->json($products);
 
-       $sql = User::query();
 
-        foreach ($arrFilter as $key =>  $filter) {
-            $sql->where($key,'=', $filter);
-        }
-
-        $user = $sql->with('category', 'style', 'brand')->get();*/
-
-        $cateId = $request->cateId;
+        /*$cateId = $request->cateId;
         $styleId = $request->styleId;
         $brandId = $request->brandId;
         if ($cateId) {
@@ -207,7 +201,7 @@ class ProductController extends Controller
                     ->get();
             }
         }
-        return response()->json($products);
+        return response()->json($products);*/
     }
 
 //    public function filterByCategory(Request $request): Factory|View|Application

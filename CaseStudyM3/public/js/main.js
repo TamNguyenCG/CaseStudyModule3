@@ -45,9 +45,9 @@ $(document).ready(function () {
                 url: origin + '/shop/filter',
                 method: 'GET',
                 data: {
-                    cateId: cateId,
-                    styleId: styleId,
-                    brandId: brandId
+                    category_id: cateId,
+                    style_id: styleId,
+                    brand_id: brandId
                 },
                 // goi ajax thanh cong
                 success: function (res) {
