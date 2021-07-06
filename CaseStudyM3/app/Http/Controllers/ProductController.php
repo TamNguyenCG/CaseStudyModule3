@@ -207,14 +207,14 @@ class ProductController extends Controller
 
     public function destroy(Request $request)
     {
-        dd($request);
         $id = $request->id;
-        for ($i=0;$i<count($id);$i++) {
+        for ($i = 0; $i < count($id); $i++) {
             $product = Product::findOrFail($id[$i]);
             if (!empty($product->image)) {
                 unlink('storage/image/' . $product->image);
             }
             $product->delete();
         }
+        Session::flash('warning', 'delete success');
     }
 }
