@@ -36,7 +36,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action-product.create', compact('categories', 'brands', 'styles'));
+        return view('admin.products.create', compact('categories', 'brands', 'styles'));
     }
 
 
@@ -61,7 +61,7 @@ class ProductController extends Controller
         }
         $product->description = $request->input('description');
         $product->save();
-        toastr()->success('Save new product success');
+        toastr()->success('Add new product success');
         return redirect()->route('admin.products-list');
     }
 
@@ -71,7 +71,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action-product.edit', compact('product', 'categories', 'brands', 'styles'));
+        return view('admin.products.edit', compact('product', 'categories', 'brands', 'styles'));
     }
 
     public function update(Request $request, $id): RedirectResponse

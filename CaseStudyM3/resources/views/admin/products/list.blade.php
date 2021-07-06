@@ -2,18 +2,18 @@
 @section('content')
     <main>
         <div class="container-fluid px-4">
-            <h1 class="mt-4">Category</h1>
+            <h1 class="mt-4">Products</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active">Category-list</li>
+                <li class="breadcrumb-item active">Products-list</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    Categories Data-table
+                    Products Datatable
                 </div>
                 <div class="card-body">
-                    <a href="{{route('admin.create')}}" class="btn btn-outline-primary mb-2"><i class="fas fa-plus"></i></a>
-                    <button onclick="return confirm('Are you sure ?!')" class="btn btn-outline-danger mb-2" id="delete">
+                    <a href="{{route('admin.product-create')}}" class="btn btn-outline-primary mb-2"><i class="fas fa-plus"></i></a>
+                    <button class="btn btn-outline-danger mb-2" id="delete">
                         <i
                             class="fas fa-trash-alt"></i></button>
 
@@ -31,10 +31,10 @@
                         <th></th>
                         </thead>
                         <tbody>
-                        @foreach($categories as $category)
-                            <tr id="delete-{{$category->id}}">
+                        @foreach($products as $product)
+                            <tr id="delete-{{$product->id}}">
                                 <td>
-                                    <input type="checkbox" value="{{$category->id}}" class="delete-checkbox"
+                                    <input type="checkbox" value="{{$product->id}}" class="delete-checkbox"
                                            name="checkbox[]">
                                 </td>
                                 <td><img class="card-img" style="height: 200px;width: 200px"
@@ -44,7 +44,7 @@
                                 <td>${{$product->price}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>
-                                    <a class="btn btn-outline-success" href="{{route('admin.edit',$product->id)}}"><i
+                                    <a class="btn btn-outline-success" href="{{route('admin.product-edit',$product->id)}}"><i
                                             class="fas fa-edit"></i></a>
                                 </td>
                             </tr>

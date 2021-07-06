@@ -17,7 +17,7 @@
         <div class="card-header">
             <h1>Edit Product</h1>
         </div>
-        <form action="{{route('admin.update',$product->id,$original ?? '')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('admin.product-update',$product->id,$original ?? '')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
                 <div class="form-floating">

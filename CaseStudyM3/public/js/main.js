@@ -14,7 +14,7 @@ $(document).ready(function () {
                 success: function (res) {
                     let html = '';
                     $.each(res, function (index, item) {
-                        html += '<li data-id="' + item.id + '" style="z-index: 1" class="list-group-item list-group-item-action-product item-product">';
+                        html += '<li data-id="' + item.id + '" style="z-index: 1" class="list-group-item list-group-item-products item-product">';
                         html += '<a href="' + origin + '/shop/' + item.id + '/detail" style="text-decoration: none">'
                         html += item.name;
                         html += '</a>';
@@ -120,25 +120,28 @@ $(document).ready(function () {
     });
 
     $('#delete').click(function () {
-        let id = $('.delete-checkbox:checked').map(function (_, el) {
-            return $(el).val();
-        }).get();
-        console.log(id)
-        if (id) {
-            $.ajax({
-                url: origin + '/admin/destroy',
-                type: 'GET',
-                data: {
-                    id: id
-                },
-                success: function () {
-                    $.each(id, function (index, id) {
-                        $('#delete-' + id).remove()
-                    })
-                },
-                error: function () {
-                }
-            })
+        if (confirm('Are you sure ?')) {
+            let id = $('.delete-checkbox:checked').map(function (_, el) {
+                return $(el).val();
+            }).get();
+            console.log(id)
+            if (id) {
+                $.ajax({
+                    url: origin + '/admin/products/destroy',
+                    method: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function () {
+                        $.each(id, function (index, id) {
+                            $('#delete-' + id).remove()
+                        })
+                    },
+                    error: function () {
+                    }
+                })
+            }
         }
     })
+
 });

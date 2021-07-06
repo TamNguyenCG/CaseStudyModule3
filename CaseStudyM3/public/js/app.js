@@ -6298,7 +6298,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     /**
      * The base implementation of `wrapperValue` which returns the result of
      * performing a sequence of actions on the unwrapped `value`, where each
-     * successive action-product is supplied the return value of the previous.
+     * successive products is supplied the return value of the previous.
      *
      * @private
      * @param {*} value The unwrapped value.
