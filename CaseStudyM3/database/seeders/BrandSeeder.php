@@ -17,7 +17,7 @@ class BrandSeeder extends Seeder
     {
         $brand = new Brand();
         $brand->image = "";
-        $brand->name = 'Addidas';
+        $brand->name = 'Adidas';
         $brand->save();
 
         $brand = new Brand();

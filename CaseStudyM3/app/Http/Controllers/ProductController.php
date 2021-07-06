@@ -34,7 +34,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('products.create', compact('categories', 'brands', 'styles'));
+        return view('admin.action.create', compact('categories', 'brands', 'styles'));
     }
 
 
@@ -60,7 +60,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->save();
         Session::flash('success', 'Save new product success !');
-        return redirect()->route('products.shop');
+        return redirect()->route('admin.products-list');
     }
 
     public function delete($id): RedirectResponse
@@ -71,7 +71,7 @@ class ProductController extends Controller
         }
         $product->delete();
         Session::flash('warning', 'delete success');
-        return redirect()->route('products.shop');
+        return redirect()->route('admin.products-list');
     }
 
     public function edit($id): Factory|View|Application
@@ -80,7 +80,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('products.edit', compact('product', 'categories', 'brands', 'styles'));
+        return view('admin.action.edit', compact('product', 'categories', 'brands', 'styles'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -106,7 +106,7 @@ class ProductController extends Controller
         $product->description = $request->input('description');
         $product->save();
         Session::flash('success', 'Edit product success !');
-        return redirect()->route('products.shop');
+        return redirect()->route('admin.products-list');
     }
 
     public function detail($id): Factory|View|Application
@@ -204,6 +204,19 @@ class ProductController extends Controller
         return response()->json($products);*/
     }
 
+
+    public function destroy(Request $request)
+    {
+        $id = $request->id;
+        for ($i=0;$i<count($id);$i++) {
+            $product = Product::findOrFail($id[$i]);
+            if (!empty($product->image)) {
+                unlink('storage/image/' . $product->image);
+            }
+            $product->delete();
+            Session::flash('warning', 'delete success');
+        }
+    }
 //    public function filterByCategory(Request $request): Factory|View|Application
 //    {
 //        $idCategory = $request->input('category_id');

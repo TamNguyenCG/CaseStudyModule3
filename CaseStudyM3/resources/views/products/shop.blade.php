@@ -33,7 +33,7 @@
                     <label for="floatingSelect">Brand</label>
                 </div>
 
-                <a class="btn btn-primary" href="{{route('products.create')}}">Add New Product</a>
+
                 <a class="btn btn-outline-success" id="filter">Filter</a>
             </div>
 
@@ -99,14 +99,14 @@
                                         </li>
                                     </ul>
                                     <p class="text-center mb-0">${{$product->price}}</p>
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <a class="btn btn-success"
-                                               href="{{route('products.edit',$product->id)}}">Edit</a>
-                                            <a class="btn btn-danger" onclick="return confirm('Are you sure ?!')"
-                                               href="{{route('products.destroy',$product->id)}}">Delete</a>
-                                        </div>
-                                    </div>
+{{--                                    <div class="row">--}}
+{{--                                        <div class="col-12">--}}
+{{--                                            <a class="btn btn-success"--}}
+{{--                                               href="{{route('products.edit',$product->id)}}">Edit</a>--}}
+{{--                                            <a class="btn btn-danger" onclick="return confirm('Are you sure ?!')"--}}
+{{--                                               href="{{route('products.destroy',$product->id)}}">Delete</a>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
                                 </div>
                             </div>
                         </div>
