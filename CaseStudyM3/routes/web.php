@@ -37,8 +37,6 @@ Route::get('/contact', function () {
 Route::prefix('shop')->group(function (){
     Route::get('/', [ProductController::class, 'getAllProduct'])->name('products.shop');
     Route::get('/{id}/detail',[ProductController::class,'detail'])->name('products.detail');
-    Route::get('style/men',[StyleController::class,'menProduct'])->name('products.men');
-    Route::get('style/women',[StyleController::class,'womenProduct'])->name('products.women');
     Route::get('/search',[ProductController::class,'search'])->name('products.search');
     Route::get('/filter',[ProductController::class,'filter'])->name('products.filter');
     Route::get('/addCart',[ProductController::class,'addCart'])->name('products.addCart');

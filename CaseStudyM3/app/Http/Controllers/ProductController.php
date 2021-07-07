@@ -115,14 +115,12 @@ class ProductController extends Controller
         return view('products.detail', compact('product', 'categories', 'brands', 'styles','products'));
     }
 
-
     public function search(Request $request): JsonResponse
     {
         $keyword = $request->keyword;
         $products = Product::with('category')->where('name', 'LIKE', '%' . $keyword . '%')->get();
         return response()->json($products);
     }
-
 
     public function filter(Request $request): JsonResponse
     {

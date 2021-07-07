@@ -55,7 +55,6 @@
             </div>
         </div>
     </main>
-<<<<<<< HEAD:CaseStudyM3/resources/views/admin/list-products.blade.php
     <script>
         $(document).ready(function () {
             let origin = window.origin;
@@ -89,8 +88,5 @@
                 }
             })
         })
-
     </script>
-=======
->>>>>>> ab03ecfca135cda21ae9b69d114949eb3dc0e898:CaseStudyM3/resources/views/admin/products/list.blade.php
 @endsection
