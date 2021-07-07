@@ -86,31 +86,6 @@ $(document).ready(function () {
         }
     });
 
-    // $('#style-choose').click(function () {
-    //     let style_id = $('#style-select').val();
-    //     // console.log(id);
-    //     if (style_id) {
-    //         $.ajax({
-    //             url: origin + 'category/style',
-    //             method: 'GET',
-    //             data: {
-    //                 id: style_id
-    //             },
-    //             success: function (res) {
-    //                 console.log(res);
-    //                 let html = '';
-    //                 $.each(res, function (index, item) {
-    //
-    //                 })
-    //
-    //             },
-    //             error: function () {
-    //                 alert('error');
-    //             }
-    //         })
-    //     }
-    // })
-
     // Checkbox selected
     $('body').on('click', '#checkAll', function () {
         $('input:checkbox').not(this).prop('checked', this.checked);
@@ -170,6 +145,8 @@ $(document).ready(function () {
         }
     })
 
+
+
     // Delete brand
     $('#delete_brand').click(function () {
         if (confirm('Are you sure ?')) {
@@ -197,4 +174,26 @@ $(document).ready(function () {
             }
         }
     })
+
+    /*$('#addCart').click(function (){
+        let id = $(this).attr('data-id');
+        if (id) {
+            $.ajax({
+                url: origin + '/shop/addCart',
+                method: 'GET',
+                data: {
+                    id: id
+                },
+                success: function () {
+                    alert('add thanh cong');
+                },
+                error: function () {
+                    alert('error');
+                }
+            })
+        } else {
+            alert('choose at least one product to add')
+        }
+    })*/
+
 });

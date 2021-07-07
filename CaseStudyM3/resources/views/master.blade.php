@@ -16,6 +16,7 @@
 
 
     <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
     <link rel="stylesheet" href="{{asset('assets/css/fontawesome.min.css')}}">
@@ -83,13 +84,47 @@
                     </li>
                 </ul>
             </div>
-            <div class="navbar align-self-center d-flex">
-                <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                </a>
+            <div class="navbar align-self-center d-flex row">
+                <div class="col-3">
+                <button style="border: none; background: white" id="modal-cart" data-toggle="modal" data-target="#cart-modal-body" >
+                    <i class="fas fa-shopping-cart"></i><span style="position: absolute" class="badge badge-pill badge-danger">{{ count((array) session('cart')) }}</span>
+                </button>
+                <div class="modal fade" id="cart-modal-body" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalScrollableTitle">Shopping Cart</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                @if(session('cart'))
+                                    @foreach(session('cart') as $id => $details)
+                                        <div class="row cart-detail">
+                                            <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
+                                                <img src="{{ $details['image'] }}" />
+                                            </div>
+                                            <div class="col-lg-8 col-sm-8 col-8 cart-detail-product">
+                                                <p>{{ $details['name'] }}</p>
+                                                <span class="price text-info"> ${{ $details['price'] }}</span> <span class="count"> Quantity:{{ $details['quantity'] }}</span>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a href="#"><button type="button" class="btn btn-primary">Check out</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-9">
                 @if(\Illuminate\Support\Facades\Auth::user())
-                    <div class="nav-icon position-relative text-decoration-none dropdown" href="#">
-                        <i class="fa fa-fw fa-user text-dark mr-3"></i>
+                    <div class="nav-icon position-relative text-decoration-none dropdown ml-2">
+                        <i class="fa fa-fw fa-user text-dark "></i>
                         {{\Illuminate\Support\Facades\Auth::user()->name}}
                         <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
                            aria-expanded="false"></i>
@@ -100,7 +135,9 @@
                         </ul>
                     </div>
                 @endif
+                </div>
             </div>
+            <!-- Modal -->
         </div>
     </div>
 </nav>
@@ -324,6 +361,8 @@
 
 <!-- Start Script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="{{asset('assets/js/jquery-migrate-1.2.1.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{asset('assets/js/templatemo.js')}}"></script>

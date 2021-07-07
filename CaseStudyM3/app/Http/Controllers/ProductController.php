@@ -127,6 +127,7 @@ class ProductController extends Controller
     public function filter(Request $request): JsonResponse
     {
         $data = $request->all();
+
         $sql = Product::query();
         foreach ($data as $key => $value) {
             if (!empty($value)) {
@@ -135,6 +136,50 @@ class ProductController extends Controller
         }
         $products = $sql->with('category', 'style', 'brand')->get();
         return response()->json($products);
+
+
+        /*$cateId = $request->cateId;
+        $styleId = $request->styleId;
+        $brandId = $request->brandId;
+        if ($cateId) {
+            if ($styleId) {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('style_id', '=', $styleId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('style_id', '=', $styleId)
+                        ->get();
+                }
+            } else {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('category_id', '=', $cateId)
+                        ->get();
+                }
+            }
+        } else {
+            if ($styleId) {
+                if ($brandId) {
+                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
+                        ->where('brand_id', '=', $brandId)
+                        ->get();
+                } else {
+                    $products = Product::with('category', 'style', 'brand')->where('style_id', '=', $styleId)
+                        ->get();
+                }
+            } else if ($brandId) {
+                $products = Product::with('category', 'style', 'brand')
+                    ->where('brand_id', '=', $brandId)
+                    ->get();
+            }
+        }
+        return response()->json($products);*/
     }
 
 
@@ -148,5 +193,24 @@ class ProductController extends Controller
             }
             $product->delete();
         }
+    }
+
+    public function addCart($id)
+    {
+        $product = Product::findOrFail($id);
+
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "image" => $product->image
+            ];
+        }
+        session()->put('cart', $cart);
     }
 }

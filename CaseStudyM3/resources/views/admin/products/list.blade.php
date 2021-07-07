@@ -55,4 +55,42 @@
             </div>
         </div>
     </main>
+<<<<<<< HEAD:CaseStudyM3/resources/views/admin/list-products.blade.php
+    <script>
+        $(document).ready(function () {
+            let origin = window.origin;
+            $('body').on('click', '#checkAll', function () {
+                $('input:checkbox').not(this).prop('checked', this.checked);
+            });
+
+            $('#delete').click(function () {
+                let id = $('.delete-checkbox:checked').map(function (_, el) {
+                    return $(el).val();
+                }).get();
+                console.log(id)
+                if (id) {
+                    $.ajax({
+                        url: origin + '/admin/destroy',
+                        type: 'GET',
+                        data: {
+                            id: id
+                        },
+                        success: function () {
+                            $.each(id,function (index , id){
+                                $('#delete-'+id).remove()
+                            })
+                        },
+                        error: function () {
+                            alert('error');
+                        }
+                    })
+                } else {
+                    alert("choose at least one product to delete");
+                }
+            })
+        })
+
+    </script>
+=======
+>>>>>>> ab03ecfca135cda21ae9b69d114949eb3dc0e898:CaseStudyM3/resources/views/admin/products/list.blade.php
 @endsection
