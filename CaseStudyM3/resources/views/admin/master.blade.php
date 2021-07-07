@@ -53,6 +53,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                         Home
                     </a>
+                    <a class="nav-link" href="{{route('products.shop')}}">
+                        <div class="sb-nav-link-icon"><i class="fab fa-shopify"></i></div>
+                        Shop
+                    </a>
                     <div class="sb-sidenav-menu-heading">Interface</div>
                     <a class="nav-link collapsed" href="" data-bs-toggle="collapse" data-bs-target="#collapseProducts"
                        aria-expanded="false" aria-controls="collapseLayouts">

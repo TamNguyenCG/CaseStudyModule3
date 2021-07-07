@@ -73,7 +73,7 @@ $(document).ready(function () {
                         html += '<a href="' + origin + '/shop/' + item.id + '/detail" class="h3 text-decoration-none" style="text-align: center">' + item.name + '</a>';
                         html += '<ul class="w-100 list-unstyled d-flex justify-content-between mb-0">';
                         html += '<li><p class="text-center mb-0"><span class="badge bg-danger">' + category.name + '</span></p></li>';
-                        html += '<li><p class="text-center mb-0"><span class="badge bg-danger">' + brand.name + '</span></p></li>';
+                        // html += '<li><p class="text-center mb-0"><span class="badge bg-danger">' + brand.name + '</span></p></li>';
                         html += '<li><i class="far fa-eye">' + item.view_count + '</i></li></ul>';
                         html += '<ul class="list-unstyled d-flex justify-content-center mb-1"><li><i class="text-warning fa fa-star"></i><i class="text-warning fa fa-star"></i>' +
                             '<i class="text-warning fa fa-star"></i><i class="text-muted fa fa-star"></i><i class="text-muted fa fa-star"></i></li></ul>';
@@ -90,34 +90,36 @@ $(document).ready(function () {
         }
     });
 
-    $('#style-choose').click(function () {
-        let style_id = $('#style-select').val();
-        // console.log(id);
-        if (style_id) {
-            $.ajax({
-                url: origin + 'category/style',
-                method: 'GET',
-                data: {
-                    id: style_id
-                },
-                success: function (res) {
-                    console.log(res);
-                    let html = '';
-                    $.each(res, function (index, item) {
+    // $('#style-choose').click(function () {
+    //     let style_id = $('#style-select').val();
+    //     // console.log(id);
+    //     if (style_id) {
+    //         $.ajax({
+    //             url: origin + 'category/style',
+    //             method: 'GET',
+    //             data: {
+    //                 id: style_id
+    //             },
+    //             success: function (res) {
+    //                 console.log(res);
+    //                 let html = '';
+    //                 $.each(res, function (index, item) {
+    //
+    //                 })
+    //
+    //             },
+    //             error: function () {
+    //                 alert('error');
+    //             }
+    //         })
+    //     }
+    // })
 
-                    })
-
-                },
-                error: function () {
-                    alert('error');
-                }
-            })
-        }
-    })
     // Checkbox selected
     $('body').on('click', '#checkAll', function () {
         $('input:checkbox').not(this).prop('checked', this.checked);
     });
+
     // Delete product
     $('#delete').click(function () {
         if (confirm('Are you sure ?')) {
@@ -143,6 +145,7 @@ $(document).ready(function () {
             }
         }
     })
+
     // Delete category
     $('#delete_category').click(function () {
         if (confirm('Are you sure ?')) {
