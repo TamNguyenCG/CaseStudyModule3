@@ -195,8 +195,9 @@ class ProductController extends Controller
         }
     }
 
-    public function addCart($id)
+    public function addCart(Request $request)
     {
+        $id = $request->id;
         $product = Product::findOrFail($id);
 
         $cart = session()->get('cart', []);

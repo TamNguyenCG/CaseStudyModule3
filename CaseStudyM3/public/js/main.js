@@ -15,7 +15,7 @@ $(document).ready(function () {
                 success: function (res) {
                     let html = '';
                     $.each(res, function (index, item) {
-                        html += '<li data-id="' + item.id + '" style="z-index: 1" class="list-group-item list-group-item-products item-product">';
+                        html += '<li data-id="' + item.id + '" style="z-index: 3" class="list-group-item list-group-item-products item-product">';
                         html += '<a href="' + origin + '/shop/' + item.id + '/detail" style="text-decoration: none">'
                         html += item.name;
                         html += '</a>';
@@ -23,6 +23,9 @@ $(document).ready(function () {
                     });
 
                     $('#list-product-search').html(html);
+                    $('body').click(function (){
+                        $('#list-product-search').html('');
+                    })
                 },
                 // goi ajax that bai
                 error: function () {
@@ -53,7 +56,6 @@ $(document).ready(function () {
                 },
                 // goi ajax thanh cong
                 success: function (res) {
-                    console.log(res);
                     let html = '';
                     $.each(res, function (index, item) {
                         let category = item.category;
@@ -97,7 +99,6 @@ $(document).ready(function () {
             let id = $('.delete-checkbox:checked').map(function (_, el) {
                 return $(el).val();
             }).get();
-            console.log(id)
             if (id) {
                 $.ajax({
                     url: origin + '/admin/products/destroy',
@@ -123,7 +124,6 @@ $(document).ready(function () {
             let id = $('.checkbox-category:checked').map(function (_, el) {
                 return $(el).val();
             }).get();
-            console.log(id);
             if (id) {
                 $.ajax({
                     url: origin + '/admin/category/destroy',
@@ -153,7 +153,6 @@ $(document).ready(function () {
             let id = $('.checkbox-brand:checked').map(function (_, el) {
                 return $(el).val();
             }).get();
-            console.log(id);
             if (id) {
                 $.ajax({
                     url: origin + '/admin/brand/destroy',
@@ -175,7 +174,7 @@ $(document).ready(function () {
         }
     })
 
-    /*$('#addCart').click(function (){
+    $('#addCart').click(function (){
         let id = $(this).attr('data-id');
         if (id) {
             $.ajax({
@@ -185,7 +184,7 @@ $(document).ready(function () {
                     id: id
                 },
                 success: function () {
-                    alert('add thanh cong');
+                    toastr.success("The item has been added");
                 },
                 error: function () {
                     alert('error');
@@ -194,6 +193,6 @@ $(document).ready(function () {
         } else {
             alert('choose at least one product to add')
         }
-    })*/
+    })
 
 });

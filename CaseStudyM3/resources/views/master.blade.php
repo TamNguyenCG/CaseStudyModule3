@@ -24,8 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/slick-theme.css')}}">
 
-    <!--Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @toastr_css
 </head>
 
 <body>
@@ -99,7 +98,8 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                @if(session('cart'))
+                                @if(session()->has('cart'))
+                                    <p>anh tam ngu</p>
                                     @foreach(session('cart') as $id => $details)
                                         <div class="row cart-detail">
                                             <div class="col-lg-4 col-sm-4 col-4 cart-detail-img">
@@ -405,7 +405,8 @@
     });
 </script>
 <!-- End Slider Script -->
-
+@toastr_js
+@toastr_render
 </body>
 
 </html>
