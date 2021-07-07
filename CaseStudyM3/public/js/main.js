@@ -23,6 +23,12 @@ $(document).ready(function () {
                     });
 
                     $('#list-product-search').html(html);
+                    $('body').click(function (){
+                        $('#list-product-search').html('');
+                    })
+                    $('#search-product').hover(function (){
+                        $('#list-product-search').html(html);
+                    })
                 },
                 // goi ajax that bai
                 error: function () {
