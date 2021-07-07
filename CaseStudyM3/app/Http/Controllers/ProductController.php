@@ -17,6 +17,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Yoeunes\Toastr\Facades\Toastr;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
+
         return view('products.shop', compact('products', 'categories', 'brands', 'styles'));
     }
 
@@ -34,7 +36,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action.create', compact('categories', 'brands', 'styles'));
+        return view('admin.products.create', compact('categories', 'brands', 'styles'));
     }
 
 
@@ -59,18 +61,7 @@ class ProductController extends Controller
         }
         $product->description = $request->input('description');
         $product->save();
-        Session::flash('success', 'Save new product success !');
-        return redirect()->route('admin.products-list');
-    }
-
-    public function delete($id): RedirectResponse
-    {
-        $product = Product::findOrFail($id);
-        if (!empty($product->image)) {
-            unlink('storage/image/' . $product->image);
-        }
-        $product->delete();
-        Session::flash('warning', 'delete success');
+        toastr()->success('Add new product success');
         return redirect()->route('admin.products-list');
     }
 
@@ -80,7 +71,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('admin.action.edit', compact('product', 'categories', 'brands', 'styles'));
+        return view('admin.products.edit', compact('product', 'categories', 'brands', 'styles'));
     }
 
     public function update(Request $request, $id): RedirectResponse
@@ -105,7 +96,7 @@ class ProductController extends Controller
         }
         $product->description = $request->input('description');
         $product->save();
-        Session::flash('success', 'Edit product success !');
+        toastr()->success('Edit product success!');
         return redirect()->route('admin.products-list');
     }
 
@@ -120,24 +111,10 @@ class ProductController extends Controller
         $categories = Category::all();
         $brands = Brand::all();
         $styles = Style::all();
-        return view('products.detail', compact('product', 'categories', 'brands', 'styles'));
+        $products = Product::all();
+        return view('products.detail', compact('product', 'categories', 'brands', 'styles','products'));
     }
 
-//    public function menProduct(): Factory|View|Application
-//    {
-//        $menproducts = Product::where('style_id', 1)->paginate(5);
-//        $categories = Category::all();
-//        $styles = Style::all();
-//        return view('styles.men', compact('menproducts','styles','categories'));
-//    }
-//
-//    public function womenProduct(): Factory|View|Application
-//    {
-//        $womenproducts = Product::where('style_id', 2)->paginate(5);
-//        $categories = Category::all();
-//        $styles = Style::all();
-//        return view('styles.women', compact('womenproducts', 'styles','categories'));
-//    }
 
     public function search(Request $request): JsonResponse
     {
@@ -150,6 +127,7 @@ class ProductController extends Controller
     public function filter(Request $request): JsonResponse
     {
         $data = $request->all();
+
         $sql = Product::query();
         foreach ($data as $key => $value) {
             if (!empty($value)) {
@@ -215,7 +193,6 @@ class ProductController extends Controller
             }
             $product->delete();
         }
-        Session::flash('warning', 'delete success');
     }
 
     public function addCart($id)

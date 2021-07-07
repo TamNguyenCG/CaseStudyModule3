@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StyleController;
@@ -56,11 +58,32 @@ Route::prefix('/category')->group(function (){
 
 Route::prefix('admin')->group(function (){
     Route::get('manager',[HomeController::class,'dashboard'])->name('admin.dashboard');
-    Route::get('/products',[HomeController::class,'getAll'])->name('admin.products-list');
-    Route::get('/create', [ProductController::class, 'create'])->name('admin.create');
-    Route::post('/create', [ProductController::class, 'store'])->name('admin.store');
-    Route::get('/{id}/edit',[ProductController::class,'edit'])->name('admin.edit');
-    Route::post('/{id}/edit',[ProductController::class,'update'])->name('admin.update');
-    Route::get('/destroy',[ProductController::class,'destroy'])->name('admin.destroy');
-    Route::get('/search',[ProductController::class,'search'])->name('admin.search');
+
+    Route::prefix('products')->group(function (){
+        Route::get('/',[HomeController::class,'getAll'])->name('admin.products-list');
+        Route::get('create', [ProductController::class, 'create'])->name('admin.product-create');
+        Route::post('create', [ProductController::class, 'store'])->name('admin.product-store');
+        Route::get('/{id}/edit',[ProductController::class,'edit'])->name('admin.product-edit');
+        Route::post('/{id}/edit',[ProductController::class,'update'])->name('admin.product-update');
+        Route::get('/destroy',[ProductController::class,'destroy'])->name('admin.product-destroy');
+        Route::get('/search',[ProductController::class,'search'])->name('admin.search');
+    });
+
+    Route::prefix('category')->group(function (){
+        Route::get('/',[CategoryController::class,'getAllCategory'])->name('admin.categories');
+        Route::get('create', [CategoryController::class, 'create'])->name('admin.category-create');
+        Route::post('create', [CategoryController::class, 'store'])->name('admin.category-store');
+        Route::get('/{id}/edit',[CategoryController::class,'edit'])->name('admin.category-edit');
+        Route::post('/{id}/edit',[CategoryController::class,'update'])->name('admin.category-update');
+        Route::get('/destroy',[CategoryController::class,'destroy'])->name('admin.category-destroy');
+    });
+
+    Route::prefix('brand')->group(function (){
+        Route::get('/',[BrandController::class,'getAllBrand'])->name('admin.brands');
+        Route::get('create', [BrandController::class, 'create'])->name('admin.brand-create');
+        Route::post('create', [BrandController::class, 'store'])->name('admin.brand-store');
+        Route::get('/{id}/edit',[BrandController::class,'edit'])->name('admin.brand-edit');
+        Route::post('/{id}/edit',[BrandController::class,'update'])->name('admin.brand-update');
+        Route::get('/destroy',[BrandController::class,'destroy'])->name('admin.brand-destroy');
+    });
 });

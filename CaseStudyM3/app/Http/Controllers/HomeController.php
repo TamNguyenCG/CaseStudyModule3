@@ -23,7 +23,7 @@ class HomeController extends Controller
         $products = Product::all();
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin.list-products',compact('products','categories','brands'));
+        return view('admin.products.list',compact('products','categories','brands'));
     }
 
 }

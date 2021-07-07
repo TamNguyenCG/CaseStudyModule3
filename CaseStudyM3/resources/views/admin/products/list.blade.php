@@ -12,9 +12,11 @@
                     Products Datatable
                 </div>
                 <div class="card-body">
-                    <a href="{{route('admin.create')}}" class="btn btn-outline-primary mb-2"><i class="fas fa-plus"></i></a>
-                    <button onclick="return confirm('Are you sure ?!')" class="btn btn-outline-danger mb-2" id="delete"><i
+                    <a href="{{route('admin.product-create')}}" class="btn btn-outline-primary mb-2"><i class="fas fa-plus"></i></a>
+                    <button class="btn btn-outline-danger mb-2" id="delete">
+                        <i
                             class="fas fa-trash-alt"></i></button>
+
                     <table class="table">
                         <thead class="table-dark">
                         <th>
@@ -42,7 +44,7 @@
                                 <td>${{$product->price}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>
-                                    <a class="btn btn-outline-success" href="{{route('admin.edit',$product->id)}}"><i
+                                    <a class="btn btn-outline-success" href="{{route('admin.product-edit',$product->id)}}"><i
                                             class="fas fa-edit"></i></a>
                                 </td>
                             </tr>
@@ -53,6 +55,7 @@
             </div>
         </div>
     </main>
+<<<<<<< HEAD:CaseStudyM3/resources/views/admin/list-products.blade.php
     <script>
         $(document).ready(function () {
             let origin = window.origin;
@@ -88,4 +91,6 @@
         })
 
     </script>
+=======
+>>>>>>> ab03ecfca135cda21ae9b69d114949eb3dc0e898:CaseStudyM3/resources/views/admin/products/list.blade.php
 @endsection
