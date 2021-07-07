@@ -49,11 +49,6 @@ Route::prefix('users')->group(function (){
     Route::get('/logout',[AuthController::class,'logout'])->name('users.logout');
 });
 
-Route::prefix('/category')->group(function (){
-    Route::get('/filter',[ProductController::class, 'getProductByCategoryId'])->name('category.filter');
-    Route::get('/style',[ProductController::class,'getProductByStyleId'])->name('style.filter');
-});
-
 Route::prefix('admin')->group(function (){
     Route::get('manager',[HomeController::class,'dashboard'])->name('admin.dashboard');
 

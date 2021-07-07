@@ -48,9 +48,6 @@ $(document).ready(function () {
         let cateId = $('#category').val();
         let styleId = $('#style').val();
         let brandId = $('#brand').val();
-        console.log(cateId);
-        console.log(styleId);
-        console.log(brandId);
         if (cateId || styleId || brandId) {
             $.ajax({
                 url: origin + '/shop/filter',
@@ -182,7 +179,7 @@ $(document).ready(function () {
 
     $('.addCart').click(function (){
         let id = $(this).attr('data-id');
-        console.log(id);
+        // console.log(id);
         if (id) {
             $.ajax({
                 url: origin + '/shop/addCart',
@@ -203,4 +200,36 @@ $(document).ready(function () {
         }
     })
 
+    $('.btn-plus').click(function(){
+        let id = $(this).attr('detail-id');
+        // console.log(id);
+        if(id){
+            $.ajax({
+                url: origin + '/shop/cartPlus',
+                method: "GET",
+                data: {
+                    id: id
+                },
+                success: function (){
+                    $('.quantity_product').val++;
+                },
+            })
+        }
+    })
+    $('.btn-minus').click(function(){
+        let id = $(this).attr('detail-id');
+        console.log(id);
+        if(id){
+            $.ajax({
+                url: origin + '/shop/cartMinus',
+                method: "GET",
+                data: {
+                    id: id
+                },
+                success: function (){
+
+                },
+            })
+        }
+    })
 });

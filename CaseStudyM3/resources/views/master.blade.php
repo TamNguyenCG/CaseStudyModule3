@@ -86,7 +86,7 @@
                     <button style="border: none; background: white" id="modal-cart" data-toggle="modal"
                             data-target="#cart-modal-body">
                         <i class="fas fa-shopping-cart"></i><span style="position: absolute"
-                                                                  class="badge badge-pill badge-danger" id="cart-quantity">{{ count((array) session('cart')) }}</span>
+                                                                  class="badge badge-pill badge-danger" id="cart-quantity">{{ count((array)session('cart')) }}</span>
                     </button>
                     <div class="modal fade bd-example-modal-lg" id="cart-modal-body" tabindex="-1" role="dialog"
                          aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <table class="table">
-                                        <tr class="table-primary">
+                                        <tr class="table-primary text-center">
                                             <th>
                                                 <input type="checkbox" id="checkAll">
                                             </th>
@@ -108,12 +108,13 @@
                                             <th>Name</th>
                                             <th>Price ($)</th>
                                             <th>Quantity</th>
+                                            <th>Total</th>
                                             <th></th>
                                         </tr>
 
                                         @if(session()->has('cart'))
                                             @foreach(session('cart') as $id => $details)
-                                                <tr id="delete-{{$id}}">
+                                                <tr id="delete-{{$id}}" class="text-center">
                                                     <td>
                                                         <input class="" type="checkbox">
                                                     </td>
@@ -124,11 +125,14 @@
                                                         {{$details['name']}}
                                                     </td>
                                                     <td>
-                                                        {{ $details['price'] }}
+                                                        ${{$details['price']}}
                                                     </td>
                                                     <td>
-                                                        <i class="fas fa-minus" id="btn-minus"></i> {{$details['quantity']}} <i class="fas fa-plus" id="btn-plus"></i>
+                                                        <button detail-id="{{$id}}" class="btn btn-minus" style="color: green"><i class="fas fa-minus"  aria-hidden="true"></i></button>
+                                                        <input type="text" class="quantity_product" value="{{$details['quantity']}}" style="width: 30px;border: 0;text-align: center" min="0" required>
+                                                        <button detail-id="{{$id}}" class="btn btn-plus" style="color: green"><i class="fas fa-plus"  aria-hidden="true"></i></button>
                                                     </td>
+                                                    <td>{{--<span>{{$details['total']}}</span>--}}</td>
                                                     <td>
                                                         <button></button>
                                                     </td>
