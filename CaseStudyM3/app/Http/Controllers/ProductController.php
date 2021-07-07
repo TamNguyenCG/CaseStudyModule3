@@ -112,7 +112,7 @@ class ProductController extends Controller
         $brands = Brand::all();
         $styles = Style::all();
         $products = Product::all();
-        return view('products.detail', compact('product', 'categories', 'brands', 'styles','products'));
+        return view('products.detail', compact('product', 'categories', 'brands', 'styles', 'products'));
     }
 
 
@@ -131,7 +131,7 @@ class ProductController extends Controller
         $sql = Product::query();
         foreach ($data as $key => $value) {
             if (!empty($value)) {
-                $sql->where($key,'=', $value);
+                $sql->where($key, '=', $value);
             }
         }
         $products = $sql->with('category', 'style', 'brand')->get();
@@ -195,20 +195,21 @@ class ProductController extends Controller
         }
     }
 
-    public function addCart($id)
+    public function addCart(Request $request)
     {
+        $id = $request->id;
         $product = Product::findOrFail($id);
 
         $cart = session()->get('cart', []);
 
-        if(isset($cart[$id])) {
+        if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
         } else {
             $cart[$id] = [
                 "name" => $product->name,
-                "quantity" => 1,
                 "price" => $product->price,
-                "image" => $product->image
+                "image" => $product->image,
+                "quantity" => 1
             ];
         }
         session()->put('cart', $cart);
