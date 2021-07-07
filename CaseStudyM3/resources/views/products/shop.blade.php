@@ -52,8 +52,6 @@
                                placeholder="Search By Product's Name" aria-label="Search" name="keyword">
                         <ul class="list-group col-md-11" style="position: absolute" id="list-product-search"></ul>
                     </div>
-
-
                 </div>
                 <div class="row" id="product-list">
                     @foreach($products as $product)
@@ -68,7 +66,7 @@
                                             <li><a class="btn btn-success text-white mt-2"
                                                    href="{{route('products.detail',$product->id)}}"><i class="far fa-eye"></i></a>
                                             </li>
-                                            <li><button id="addCart" data-id="{{$product->id}}" class="btn btn-success text-white mt-2"><i class="fas fa-cart-plus"></i></button>
+                                            <li><button data-id="{{$product->id}}" class="btn btn-success text-white mt-2 addCart"><i class="fas fa-cart-plus"></i></button>
                                             </li>
                                         </ul>
                                     </div>
