@@ -57,12 +57,8 @@ $(document).ready(function () {
                     let html = '';
                     $.each(res, function (index, item) {
                         let category = item.category;
-                        let style = item.style;
-                        let brand = item.brand;
-                        console.log(category);
-                        console.log(style);
-                        console.log(brand);
-                        html += '<div class="col-md-3" style="width: 280px"><div class="card mb-4 product-wap rounded-0"><div class="card rounded-0">';
+
+                        html += '<div class="col-md-4"><div class="card mb-4 product-wap rounded-0"><div class="card rounded-0">';
                         html += '<img class="card-img rounded-0 img-fluid" style="height: 250px" src="' + origin + '/storage/image/' + item.image + '">';
                         html += '<div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">';
                         html += '<ul class="list-unstyled">';
