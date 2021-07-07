@@ -23,8 +23,14 @@ $(document).ready(function () {
                     });
 
                     $('#list-product-search').html(html);
+                    // di chuot ra ngoai thi an
+
                     $('body').click(function (){
                         $('#list-product-search').html('');
+                    })
+                    // di chuot vao trong thi hien
+                    $('#search-product').hover(function (){
+                        $('#list-product-search').html(html);
                     })
                 },
                 // goi ajax that bai

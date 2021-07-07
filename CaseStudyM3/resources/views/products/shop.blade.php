@@ -51,7 +51,10 @@
                         <input id="search-product" class="form-control me-2" type="search"
                                placeholder="Search By Product's Name" aria-label="Search" name="keyword">
                         <ul class="list-group col-md-11" style="position: absolute" id="list-product-search"></ul>
+
                     </div>
+
+
                 </div>
                 <div class="row" id="product-list">
                     @foreach($products as $product)
