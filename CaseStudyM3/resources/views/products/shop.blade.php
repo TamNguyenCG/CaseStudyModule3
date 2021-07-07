@@ -69,7 +69,7 @@
                                             <li><a class="btn btn-success text-white mt-2"
                                                    href="{{route('products.detail',$product->id)}}"><i class="far fa-eye"></i></a>
                                             </li>
-                                            <li><button id="addCart" data-id="{{$product->id}}" class="btn btn-success text-white mt-2"><i class="fas fa-cart-plus"></i></button>
+                                            <li><button data-id="{{$product->id}}" class="btn btn-success text-white mt-2 addCart"><i class="fas fa-cart-plus"></i></button>
                                             </li>
                                         </ul>
                                     </div>

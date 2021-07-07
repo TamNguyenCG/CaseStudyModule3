@@ -180,8 +180,9 @@ $(document).ready(function () {
         }
     })
 
-    $('#addCart').click(function (){
+    $('.addCart').click(function (){
         let id = $(this).attr('data-id');
+        console.log(id);
         if (id) {
             $.ajax({
                 url: origin + '/shop/addCart',
@@ -191,6 +192,7 @@ $(document).ready(function () {
                 },
                 success: function () {
                     toastr.success("The item has been added");
+                    $('#cart-quantity').val++;
                 },
                 error: function () {
                     alert('error');
