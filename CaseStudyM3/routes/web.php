@@ -39,6 +39,7 @@ Route::prefix('shop')->group(function (){
     Route::get('style/women',[StyleController::class,'womenProduct'])->name('products.women');
     Route::get('/search',[ProductController::class,'search'])->name('products.search');
     Route::get('/filter',[ProductController::class,'filter'])->name('products.filter');
+    Route::get('/addCart',[ProductController::class,'addCart'])->name('products.addCart');
 });
 Route::prefix('users')->group(function (){
     Route::get('/login',[AuthController::class,'login'])->name('users.login');

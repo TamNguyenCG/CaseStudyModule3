@@ -78,9 +78,11 @@
                             })
                         },
                         error: function () {
-                            alert("choose at least one product to delete");
+                            alert('error');
                         }
                     })
+                } else {
+                    alert("choose at least one product to delete");
                 }
             })
         })

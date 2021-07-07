@@ -115,4 +115,25 @@ $(document).ready(function () {
         }
     })
 
+    $('#addCart').click(function (){
+        let id = $(this).attr('data-id');
+        if (id) {
+            $.ajax({
+                url: origin + '/shop/addCart',
+                method: 'GET',
+                data: {
+                    id: id
+                },
+                success: function () {
+                    alert('add thanh cong');
+                },
+                error: function () {
+                    alert('error');
+                }
+            })
+        } else {
+            alert('choose at least one product to add')
+        }
+    })
+
 });
