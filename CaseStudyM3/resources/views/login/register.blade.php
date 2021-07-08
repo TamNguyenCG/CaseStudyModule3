@@ -30,18 +30,27 @@
                     <form action="{{route('users.confirmRegister')}}" class="signin-form" method="post">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control border-primary" placeholder="Username" name="name"
+                            <input type="text" class="form-control border-primary @error('name') is-invalid @enderror" placeholder="Username" name="name"
                                    required>
+                            @error('name')
+                            <p class="text-warning">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control border-primary" placeholder="Email" name="email"
+                            <input type="email" class="form-control border-primary @error('email') is-invalid @enderror" placeholder="Email" name="email"
                                    required>
+                            @error('email')
+                            <p class="text-warning">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <input id="password-field" type="password" class="form-control border-primary"
+                            <input id="password-field" type="password" class="form-control border-primary @error('password') is-invalid @enderror"
                                    placeholder="Password"
                                    name="password" required>
                             <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            @error('password')
+                            <p class="text-warning">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="form-group row">
                             <div class="col-6">

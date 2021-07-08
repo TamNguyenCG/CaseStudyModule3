@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
@@ -23,7 +24,7 @@ class CategoryController extends Controller
         return view('admin.categories.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(CategoryRequest $request): RedirectResponse
     {
         $category = new Category();
         $category->name = $request->input('category_name');
@@ -38,7 +39,7 @@ class CategoryController extends Controller
         return view('admin.categories.edit',compact('category'));
     }
 
-    public function update(Request $request,$id): RedirectResponse
+    public function update(CategoryRequest $request,$id): RedirectResponse
     {
         $category = Category::findOrFail($id);
         $category->name = $request->input('category_name');

@@ -24,14 +24,28 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required|max:30",
-            "color" => "required|string",
-            "phone" => "required|numeric|",
-            "price" => "required|numeric",
-            "stocks" => "required|numeric",
-            "image" => "image",
-            "email" => "required|email|min:15|max:32",
+            'name' => 'required|unique:users,name|min:6|max:32|regex:/^[a-zA-Z0-9_-]$/',
+            "email" => "required|unique:users,email|email:filter|min:15|max:32",
             "password" => "required|min:6|max:32|"
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required'=>'Username field is required',
+            'name.min' => "Username must over 6 characters",
+            'name.max' => "Username is too long, required under 32 characters",
+            'name.unique' => "Email already has been taken",
+            'name.regex' => "Special Character is forbidden",
+            'email.required'=>'Email field is required',
+            'email.email' => "Wrong type of email address",
+            'email.unique' => "Email already has been taken",
+            'email.min'=>"Invalid email",
+            'email.max' => "Invalid email",
+            'password.required' => 'Password is required',
+            'password.min' => 'Password is too short',
+            'password.max' => 'Password is too long',
         ];
     }
 }

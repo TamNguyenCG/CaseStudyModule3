@@ -21,8 +21,11 @@
             @csrf
             <div class="card-body">
                 <div class="form-floating">
-                    <input type="text" class="form-control mb-3" placeholder="Category's Name" name="category_name" required>
+                    <input type="text" class="form-control mb-3 @error('category_name') is-invalid @enderror" placeholder="Category's Name" name="category_name" required>
                     <label for="floatingInput">Category's Name</label>
+                    @error('category_name')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <button class="btn btn-outline-success" type="submit">Add</button>
                 <button class="btn btn-outline-dark" onclick="window.history.go(-1);return false;">Back</button>

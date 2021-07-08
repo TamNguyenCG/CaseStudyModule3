@@ -24,6 +24,7 @@
                             <input type="checkbox" class="" id="checkAll">
                         </th>
                         <th>Shoes</th>
+                        <th>Name</th>
                         <th>Brand</th>
                         <th>Color</th>
                         <th>Price</th>
@@ -39,6 +40,7 @@
                                 </td>
                                 <td><img class="card-img" style="height: 200px;width: 200px"
                                          src="{{asset('storage/image/'.$product->image)}}"></td>
+                                <td>{{$product->name}}</td>
                                 <td>{{$product->brand->name}}</td>
                                 <td>{{$product->color}}</td>
                                 <td>${{$product->price}}</td>

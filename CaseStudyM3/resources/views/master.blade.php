@@ -138,9 +138,11 @@
                             <i class="fa fa-caret-square-down" type="button" data-bs-toggle="dropdown"
                                aria-expanded="false"></i>
                             <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton1">
+                                @if(Auth::user()->name == 'admin')
                                 <li><i class="fas fa-user-cog"></i><a href="{{route('admin.dashboard')}}"
                                                                       style="text-decoration: none"> Setting</a></li>
                                 <hr>
+                                @endif
                                 <li><i class="fas fa-sign-out-alt"></i><a style="text-decoration: none"
                                                                           href="{{route('users.logout')}}"> Log Out</a>
                                 </li>
