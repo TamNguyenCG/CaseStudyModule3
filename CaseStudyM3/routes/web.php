@@ -43,6 +43,7 @@ Route::prefix('shop')->group(function (){
     Route::get('/showCart',[ProductController::class,'showCart'])->name('products.showCart');
     Route::get('/cartPlus',[ProductController::class,'cartPlus'])->name('products.cartPlus');
     Route::get('/cartMinus',[ProductController::class,'cartMinus'])->name('products.cartMinus');
+    Route::get('/deleteCart',[ProductController::class,'deleteCart'])->name('products.deleteCart');
 });
 
 Route::prefix('users')->group(function (){

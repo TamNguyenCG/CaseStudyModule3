@@ -94,12 +94,12 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalScrollableTitle">Shopping Cart</h5>
+                                    <button id="trashcan" class="btn btn-outline-danger ml-3"><i class="fas fa-trash-alt"></i></button>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> </button>
                                     <table class="table">
                                         <thead>
                                         <tr class="table-primary text-center">
@@ -430,4 +430,5 @@
     table,td,tr,th{
         text-align: center;
     }
+
 </style>

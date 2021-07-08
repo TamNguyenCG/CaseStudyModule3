@@ -223,22 +223,32 @@ class ProductController extends Controller
     public function cartPlus(Request $request)
     {
         $id = $request->id;
-        $cart = session()->get('cart',[]);
+        $cart = session()->get('cart', []);
         $cart[$id]['quantity']++;
-        session()->put('cart',$cart);
+        session()->put('cart', $cart);
         return response()->json('');
     }
 
     public function cartMinus(Request $request)
     {
         $id = $request->id;
-        $cart = session()->get('cart',[]);
+        $cart = session()->get('cart', []);
         $cart[$id]['quantity']--;
-        if ($cart[$id]['quantity']== 0) {
+        if ($cart[$id]['quantity'] == 0) {
             unset($cart[$id]);
         }
-        session()->put('cart',$cart);
+        session()->put('cart', $cart);
         return response()->json('');
     }
 
+    public function deleteCart(Request $request)
+    {
+        $id = $request->id;
+        $cart = session()->get('cart', []);
+        for ($i = 0; $i <count($id);$i++){
+            unset($cart[$id[$i]]);
+        }
+        session()->put('cart', $cart);
+        return response()->json('');
+    }
 }

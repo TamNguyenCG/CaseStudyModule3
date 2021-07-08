@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('#trashcan').hide();
     let origin = window.origin;
     // Shop-search
     $('#search-product').keyup(function () {
@@ -94,6 +95,7 @@ $(document).ready(function () {
     // Checkbox selected
     $('body').on('click', '#checkAll', function () {
         $('input:checkbox').not(this).prop('checked', this.checked);
+        $('#trashcan').toggle();
     });
 
     // Delete product
@@ -213,7 +215,7 @@ $(document).ready(function () {
                 let html = '';
                 let price = 0;
                 $.each(res, function (index, item) {
-                    html += '<tr className="text-center"><td><input className="" type="checkbox"></td>';
+                    html += '<tr className="text-center"><td><input value="'+index+'" class="cart-checkbox" type="checkbox"></td>';
                     html += '<td><img src="' + origin + '/storage/image/' + item.image + '" style="width: 80px;height: 80px"></td>';
                     html += '<td> ' + item.name + ' </td>';
                     html += '<td> ' + item.price + '</td>';
@@ -222,7 +224,6 @@ $(document).ready(function () {
                     html += '<button detail-id="' + index + '" class="btn btn-plus cart-plus" style="color: green"><i class="fas fa-plus"  aria-hidden="true"></i></button></td>';
                     html += '</tr>';
                     price += item.price * item.quantity;
-                    console.log(price);
                 })
                 $('#cart-products-info').html(html);
                 $('#total-price').html(price);
@@ -269,6 +270,33 @@ $(document).ready(function () {
                 error: function (res) {
                 }
             })
+        }
+    })
+
+
+    $('body').on('click', '.cart-checkbox', function () {
+        $('#trashcan').toggle();
+    })
+    $('#trashcan').click(function () {
+        if (confirm('Are you sure ?')) {
+            let id = $('.cart-checkbox:checked').map(function (_, el) {
+                return $(el).val();
+            }).get();
+            if (id) {
+                $.ajax({
+                    url: origin + '/shop/deleteCart',
+                    method: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function () {
+                        displayCartByAjax();
+                        toastr.success('Delete product successfully !')
+                    },
+                    error: function () {
+                    }
+                })
+            }
         }
     })
 });
