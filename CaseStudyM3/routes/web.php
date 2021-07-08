@@ -40,7 +40,11 @@ Route::prefix('shop')->group(function (){
     Route::get('/search',[ProductController::class,'search'])->name('products.search');
     Route::get('/filter',[ProductController::class,'filter'])->name('products.filter');
     Route::get('/addCart',[ProductController::class,'addCart'])->name('products.addCart');
+    Route::get('/showCart',[ProductController::class,'showCart'])->name('products.showCart');
+    Route::get('/cartPlus',[ProductController::class,'cartPlus'])->name('products.cartPlus');
+    Route::get('/cartMinus',[ProductController::class,'cartMinus'])->name('products.cartMinus');
 });
+
 Route::prefix('users')->group(function (){
     Route::get('/login',[AuthController::class,'login'])->name('users.login');
     Route::post('/login',[AuthController::class,'confirmLogin'])->name('users.confirm');

@@ -99,7 +99,9 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
+                                    <button class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i> </button>
                                     <table class="table">
+                                        <thead>
                                         <tr class="table-primary text-center">
                                             <th>
                                                 <input type="checkbox" id="checkAll">
@@ -108,44 +110,21 @@
                                             <th>Name</th>
                                             <th>Price ($)</th>
                                             <th>Quantity</th>
-                                            <th>Total</th>
-                                            <th></th>
                                         </tr>
-
-                                        @if(session()->has('cart'))
-                                            @foreach(session('cart') as $id => $details)
-                                                <tr  class="text-center">
-                                                    <td>
-                                                        <input class="" type="checkbox">
-                                                    </td>
-                                                    <td>
-                                                        <img src="{{asset('storage/image/'.$details['image'])}}" style="width: 80px;height: 80px" alt="image">
-                                                    </td>
-                                                    <td>
-                                                        {{$details['name']}}
-                                                    </td>
-                                                    <td>
-                                                        ${{$details['price']}}
-                                                    </td>
-                                                    <td>
-                                                        <button detail-id="{{$id}}" class="btn btn-minus" style="color: green"><i class="fas fa-minus"  aria-hidden="true"></i></button>
-                                                        <input type="text" class="quantity_product" value="{{$details['quantity']}}" style="width: 30px;border: 0;text-align: center" min="0" required>
-                                                        <button detail-id="{{$id}}" class="btn btn-plus" style="color: green"><i class="fas fa-plus"  aria-hidden="true"></i></button>
-                                                    </td>
-                                                    <td>{{--<span>{{$details['total']}}</span>--}}</td>
-                                                    <td>
-                                                        <button></button>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        @endif
+                                        </thead>
+                                        <tbody  id="cart-products-info" >
+                                        </tbody>
                                     </table>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer row">
+                                    <div class="col-md-6" style="float:left;"><i class="fas fa-coins"></i> Total Price: $<span id="total-price"></span>
+                                    </div>
+                                    <div class="col-md-4">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     <a href="#">
-                                        <button type="button" class="btn btn-primary">Check out</button>
+                                        <button type="button" class="btn btn-primary"><i class="fas fa-credit-card"></i> Check out</button>
                                     </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -445,3 +424,8 @@
 @toastr_render
 </body>
 </html>
+<style>
+    table,td,tr,th{
+        text-align: center;
+    }
+</style>

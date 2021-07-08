@@ -25,11 +25,11 @@ $(document).ready(function () {
                     $('#list-product-search').html(html);
                     // di chuot ra ngoai thi an
 
-                    $('body').click(function (){
+                    $('body').click(function () {
                         $('#list-product-search').html('');
                     })
                     // di chuot vao trong thi hien
-                    $('#search-product').hover(function (){
+                    $('#search-product').hover(function () {
                         $('#list-product-search').html(html);
                     })
                 },
@@ -150,7 +150,6 @@ $(document).ready(function () {
     })
 
 
-
     // Delete brand
     $('#delete_brand').click(function () {
         if (confirm('Are you sure ?')) {
@@ -178,7 +177,7 @@ $(document).ready(function () {
         }
     })
 
-    $('.addCart').click(function (){
+    $('.addCart').click(function () {
         let id = $(this).attr('data-id');
         // console.log(id);
         if (id) {
@@ -192,13 +191,12 @@ $(document).ready(function () {
                     toastr.success("The item has been added");
                     let count = 0;
                     $.each(res, function () {
-                        count ++;
+                        count++;
                     })
                     $('#cart-quantity').html(count);
 
                 },
                 error: function () {
-                    alert('addcart');
                 }
             })
         } else {
@@ -206,35 +204,70 @@ $(document).ready(function () {
         }
     })
 
-    $('.btn-plus').click(function(){
+
+    function displayCartByAjax() {
+        $.ajax({
+            url: origin + '/shop/showCart',
+            method: 'GET',
+            success: function (res) {
+                let html = '';
+                let price = 0;
+                $.each(res, function (index, item) {
+                    html += '<tr className="text-center"><td><input className="" type="checkbox"></td>';
+                    html += '<td><img src="' + origin + '/storage/image/' + item.image + '" style="width: 80px;height: 80px"></td>';
+                    html += '<td> ' + item.name + ' </td>';
+                    html += '<td> ' + item.price + '</td>';
+                    html += '<td><button detail-id="' + index + '" class="btn btn-minus cart-minus" style="color: green"><i class="fas fa-minus"  aria-hidden="true"></i></button>';
+                    html += '<input type="text" id="quantity-' + index + '" class="quantity_product" value="' + item.quantity + '" style="width: 30px;border: 0;text-align: center" min="0" required>';
+                    html += '<button detail-id="' + index + '" class="btn btn-plus cart-plus" style="color: green"><i class="fas fa-plus"  aria-hidden="true"></i></button></td>';
+                    html += '</tr>';
+                    price += item.price * item.quantity;
+                    console.log(price);
+                })
+                $('#cart-products-info').html(html);
+                $('#total-price').html(price);
+            },
+            error: function () {
+            }
+        })
+    }
+
+    $('#modal-cart').click(function () {
+        displayCartByAjax();
+    })
+
+    $('body').on('click', '.cart-plus', function () {
         let id = $(this).attr('detail-id');
-        // console.log(id);
-        if(id){
+        if (id) {
             $.ajax({
                 url: origin + '/shop/cartPlus',
                 method: "GET",
                 data: {
                     id: id
                 },
-                success: function (){
-                    $('.quantity_product').val++;
+                success: function () {
+                    displayCartByAjax();
                 },
+                error: function () {
+
+                }
             })
         }
     })
-    $('.btn-minus').click(function(){
+    $('body').on('click', '.cart-minus', function () {
         let id = $(this).attr('detail-id');
-        console.log(id);
-        if(id){
+        if (id) {
             $.ajax({
                 url: origin + '/shop/cartMinus',
                 method: "GET",
                 data: {
                     id: id
                 },
-                success: function (){
-
+                success: function () {
+                    displayCartByAjax();
                 },
+                error: function (res) {
+                }
             })
         }
     })
