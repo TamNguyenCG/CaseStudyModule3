@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control mb-3 @error('price') is-invalid @enderror" placeholder="Price" name="price" required>
-                    <label for="floatingInput">Price ($)</label>
+                    <label for="floatingInput">Price($)</label>
                     @error('price')
                     <p class="text-danger">{{$message}}</p>
                     @enderror
