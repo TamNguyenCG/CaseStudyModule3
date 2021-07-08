@@ -25,10 +25,10 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:products,name|regex:/^[a-zA-Z0-9 ]*$/',
-            'color' => 'required|regex:/^[a-zA-Z/]*$/',
+            'color' => "required|regex:/^[a-zA-Z \/]*$/",
             'price' => 'required|numeric',
             'stocks' => 'required|numeric',
-            'image' => 'required|unique:products,image',
+            'image' => 'required|unique:products,image|mimes:jpeg,png,jpg,gif,svg',
             'description' => 'required'
         ];
     }
@@ -51,6 +51,7 @@ class ProductRequest extends FormRequest
 
             'image.required' => 'Image is required',
             'image.unique' => 'Image already existed',
+            'image.mimes' => 'Type of image is not allow',
 
             'description.required' => 'Description is required'
         ];
