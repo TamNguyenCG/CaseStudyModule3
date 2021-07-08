@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                         @foreach($categories as $category)
-                            <tr id="delete-{{$category->id}}">
+                            <tr id="delete-category-{{$category->id}}">
                                 <td>
                                     <input type="checkbox" value="{{$category->id}}" class="checkbox-category"
                                            name="checkbox[]">

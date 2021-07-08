@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                         @foreach($brands as $brand)
-                            <tr id="delete-{{$brand->id}}">
+                            <tr id="delete-brand-{{$brand->id}}">
                                 <td>
                                     <input type="checkbox" value="{{$brand->id}}" class="checkbox-brand"
                                            name="checkbox[]">

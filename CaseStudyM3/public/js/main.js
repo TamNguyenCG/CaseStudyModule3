@@ -85,7 +85,7 @@ $(document).ready(function () {
                 },
                 // goi ajax that bai
                 error: function () {
-                    alert("error");
+                    // alert("error");
                 }
             })
         }
@@ -113,6 +113,7 @@ $(document).ready(function () {
                         $.each(id, function (index, id) {
                             $('#delete-' + id).remove()
                         })
+                        toastr.success('Delete product success !')
                     },
                     error: function () {
                     }
@@ -136,7 +137,7 @@ $(document).ready(function () {
                     },
                     success: function () {
                         $.each(id, function (index, id) {
-                            $('#delete-' + id).remove()
+                            $('#delete-category-' + id).remove()
                         })
                         toastr.success('Delete category success !')
                     },
@@ -165,7 +166,7 @@ $(document).ready(function () {
                     },
                     success: function () {
                         $.each(id, function (index, id) {
-                            $('#delete-' + id).remove()
+                            $('#delete-brand-' + id).remove()
                         })
                         toastr.success('Delete brand success !')
                     },
@@ -192,7 +193,7 @@ $(document).ready(function () {
                     $('#cart-quantity').val++;
                 },
                 error: function () {
-                    alert('error');
+                    alert('addcart');
                 }
             })
         } else {

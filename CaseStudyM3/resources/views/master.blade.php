@@ -114,7 +114,7 @@
 
                                         @if(session()->has('cart'))
                                             @foreach(session('cart') as $id => $details)
-                                                <tr id="delete-{{$id}}" class="text-center">
+                                                <tr  class="text-center">
                                                     <td>
                                                         <input class="" type="checkbox">
                                                     </td>
