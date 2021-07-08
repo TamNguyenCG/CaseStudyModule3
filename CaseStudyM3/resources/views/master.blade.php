@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-md-4">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="#">
+                                    <a href="{{route('products.checkout')}}">
                                         <button type="button" class="btn btn-primary"><i class="fas fa-credit-card"></i> Check out</button>
                                     </a>
                                     </div>

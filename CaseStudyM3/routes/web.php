@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StyleController;
@@ -84,3 +85,5 @@ Route::prefix('admin')->group(function (){
         Route::get('/destroy',[BrandController::class,'destroy'])->name('admin.brand-destroy');
     });
 });
+
+Route::get('checkout',[CheckoutController::class,'formCheckout'])->name('products.checkout');
