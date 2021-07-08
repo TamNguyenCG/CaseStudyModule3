@@ -211,6 +211,7 @@ class ProductController extends Controller
             ];
         }
         session()->put('cart', $cart);
+        return response()->json(\session('cart'));
     }
 
 }

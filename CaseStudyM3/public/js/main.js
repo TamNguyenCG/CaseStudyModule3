@@ -187,9 +187,14 @@ $(document).ready(function () {
                 data: {
                     id: id
                 },
-                success: function () {
+                success: function (res) {
                     toastr.success("The item has been added");
-                    $('#cart-quantity').val++;
+                    let count = 0;
+                    $.each(res, function () {
+                        count ++;
+                    })
+                    $('#cart-quantity').html(count);
+
                 },
                 error: function () {
                     alert('error');
