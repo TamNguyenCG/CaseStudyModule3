@@ -212,6 +212,33 @@ class ProductController extends Controller
             ];
         }
         session()->put('cart', $cart);
+        return response()->json(session('cart'));
+    }
+
+    public function showCart()
+    {
+        return response()->json(session('cart'));
+    }
+
+    public function cartPlus(Request $request)
+    {
+        $id = $request->id;
+        $cart = session()->get('cart',[]);
+        $cart[$id]['quantity']++;
+        session()->put('cart',$cart);
+        return response()->json('');
+    }
+
+    public function cartMinus(Request $request)
+    {
+        $id = $request->id;
+        $cart = session()->get('cart',[]);
+        $cart[$id]['quantity']--;
+        if ($cart[$id]['quantity']== 0) {
+            unset($cart[$id]);
+        }
+        session()->put('cart',$cart);
+        return response()->json('');
     }
 
 }
