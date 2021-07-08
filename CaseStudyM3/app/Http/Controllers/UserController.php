@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -17,7 +18,7 @@ class UserController extends Controller
         return view('login.register');
     }
 
-    public function confirmRegister(Request $request): RedirectResponse
+    public function confirmRegister(RegisterRequest $request): RedirectResponse
     {
         $user = new User();
         $user->name = $request->input('name');

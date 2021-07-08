@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
@@ -40,7 +41,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request): RedirectResponse
+    public function store(ProductRequest $request): RedirectResponse
     {
         $product = new Product();
         $product->name = $request->input('name');
@@ -74,7 +75,7 @@ class ProductController extends Controller
         return view('admin.products.edit', compact('product', 'categories', 'brands', 'styles'));
     }
 
-    public function update(Request $request, $id): RedirectResponse
+    public function update(ProductRequest $request, $id): RedirectResponse
     {
         $product = Product::findOrFail($id);
         $product->name = $request->input('name');

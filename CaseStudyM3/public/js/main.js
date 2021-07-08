@@ -193,7 +193,6 @@ $(document).ready(function () {
                     $('#cart-quantity').val++;
                 },
                 error: function () {
-                    alert('addcart');
                 }
             })
         } else {

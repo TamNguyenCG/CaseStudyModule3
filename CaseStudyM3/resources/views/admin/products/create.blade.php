@@ -22,20 +22,32 @@
             @csrf
             <div class="card-body">
                 <div class="form-floating">
-                    <input type="text" class="form-control mb-3" placeholder="Product's Name" name="name" required>
+                    <input type="text" class="form-control mb-3 @error('name') is-invalid @enderror" placeholder="Product's Name" name="name" required>
                     <label for="floatingInput">Product's Name</label>
+                    @error('name')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control mb-3" placeholder="Color" name="color" required>
+                    <input type="text" class="form-control mb-3 @error('color') is-invalid @enderror" placeholder="Color" name="color" required>
                     <label for="floatingInput">Color</label>
+                    @error('color')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control mb-3" placeholder="Price" name="price" required>
+                    <input type="text" class="form-control mb-3 @error('price') is-invalid @enderror" placeholder="Price" name="price" required>
                     <label for="floatingInput">Price ($)</label>
+                    @error('price')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control mb-3" placeholder="Stocks" name="stocks" required>
+                    <input type="text" class="form-control mb-3 @error('stocks') is-invalid @enderror" placeholder="Stocks" name="stocks" required>
                     <label for="floatingInput">Stocks</label>
+                    @error('stocks')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating mb-3">
                     <select class="form-select" name="category_id">
@@ -62,12 +74,18 @@
                     <label for="floatingInput">Style</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="file" class="form-control mb-3" placeholder="Image" name="image" required>
+                    <input type="file" class="form-control mb-3 @error('image') is-invalid @enderror" placeholder="Image" name="image" required>
+                    @error('image')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating">
-                    <textarea class="form-control mb-3" name="description" placeholder="Description"
+                    <textarea class="form-control mb-3 @error('description') is-invalid @enderror" name="description" placeholder="Description"
                               style="height: 100px" required></textarea>
                     <label for="floatingInput">Description</label>
+                    @error('description')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <button class="btn btn-outline-success" type="submit">Add</button>
                 <button class="btn btn-outline-dark" onclick="window.history.go(-1);return false;">Back</button>

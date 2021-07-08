@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -22,7 +23,7 @@ class BrandController extends Controller
         return view('admin.brands.create');
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(BrandRequest $request): RedirectResponse
     {
         $brand = new Brand();
         $file = $request->file('brand_logo');
@@ -47,7 +48,7 @@ class BrandController extends Controller
         return view('admin.brands.edit',compact('brand'));
     }
 
-    public function update(Request $request,$id)
+    public function update(BrandRequest $request,$id)
     {
         $brand = Brand::findOrFail($id);
         $brand->name = $request->input('brand_name');

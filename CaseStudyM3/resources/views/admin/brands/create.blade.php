@@ -21,12 +21,18 @@
             @csrf
             <div class="card-body">
                 <div class="form-floating">
-                    <input type="file" class="form-control mb-3" placeholder="Category's Name" name="brand_logo" required>
+                    <input type="file" class="form-control mb-3 @error('brand_logo') is-invalid @enderror " placeholder="Category's Name" name="brand_logo" required>
                     <label for="floatingInput">Logo</label>
+                    @error('brand_logo')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <div class="form-floating">
-                    <input type="text" class="form-control mb-3" placeholder="Category's Name" name="brand_name" required>
+                    <input type="text" class="form-control mb-3 @error('brand_name') is-invalid @enderror" placeholder="Category's Name" name="brand_name" required>
                     <label for="floatingInput">Brand's Name</label>
+                    @error('brand_name')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
                 </div>
                 <button class="btn btn-outline-success" type="submit">Add</button>
                 <button class="btn btn-outline-dark" onclick="window.history.go(-1);return false;">Back</button>
