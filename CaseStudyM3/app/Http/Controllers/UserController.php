@@ -26,6 +26,6 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
         toastr()->success('Account registration success');
-        return redirect()->route('homepage');
+        return redirect()->route('users.login');
     }
 }

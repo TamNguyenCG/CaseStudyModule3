@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="{{asset('login/css/style.css')}}">
-
+    @toastr_css
 </head>
 <body class="img js-fullheight" style="background-image: url({{asset('image/shop_img_7.jpg')}});">
 <section>
@@ -85,6 +85,8 @@
 <script src="{{asset('login/js/popper.js')}}"></script>
 <script src="{{asset('login/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('login/js/main.js')}}"></script>
+@toastr_js
+@toastr_render
 </body>
 </html>
 

@@ -194,7 +194,7 @@ class ProductController extends Controller
         }
     }
 
-    public function addCart(Request $request)
+    public function addCart(Request $request): JsonResponse
     {
         $id = $request->id;
         $product = Product::findOrFail($id);
@@ -215,12 +215,12 @@ class ProductController extends Controller
         return response()->json(session('cart'));
     }
 
-    public function showCart()
+    public function showCart(): JsonResponse
     {
         return response()->json(session('cart'));
     }
 
-    public function cartPlus(Request $request)
+    public function cartPlus(Request $request): JsonResponse
     {
         $id = $request->id;
         $cart = session()->get('cart',[]);
@@ -229,7 +229,7 @@ class ProductController extends Controller
         return response()->json('');
     }
 
-    public function cartMinus(Request $request)
+    public function cartMinus(Request $request): JsonResponse
     {
         $id = $request->id;
         $cart = session()->get('cart',[]);
